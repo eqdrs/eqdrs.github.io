@@ -6,7 +6,7 @@ date:   2019-09-01 00:05:00
 cover: '/assets/images/campuscode3.jpg'
 ---
 
-Como alguns de vocês sabem, no ano passado, eu me inscrevi no processo seletivo da Locaweb "Quero Ser Dev". Neste post, pretendo contar um pouco como foi minha expriência e por que você também deve participar! =D
+Como alguns de vocês sabem, no ano passado, eu me inscrevi no processo seletivo da Locaweb "Quero Ser Dev". Neste post, pretendo contar um pouco sobre o processo e por que você também deve participar! =D
 
 O [Quero Ser Dev][queroserdev] tem como objetivo selecionar pessoas que amem programar, tenham sede de aprender, paixão por desenvolvimento e estejam em busca de novos desafios. Quem se destacar na 1ª fase da seleção ganhará um treinamento focado em linguagem de programação e metodologia ágil, evidenciando quem é profissional “hands-on". Quem participar pode programar ao lado de profissionais experientes no mercado e, ao final do curso, também apresentará um projeto. Caso mande bem, poderá se tornar um Locaweber! \o/
 

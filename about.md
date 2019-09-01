@@ -16,7 +16,7 @@ Em 2015, fui selecionado no Programa de Estágio da Petrobras, onde tive a oport
 
 <img src="/assets/images/petrobras.jpeg" alt="Petrobras" title="Eu e algumas amigas da Petro em 2015." class="center"/>
 
-Em 2018, me increvi no processo seletivo Quero Ser Dev Locaweb. Após ser aprovado na 1ª fase, em 2019, me mudei para São Paulo para participar de um curso na [Campus Code][campus] focado em Ruby on Rails e metodologia ágil. E foi uma das melhores experiências da minha vida! Fui selecionado dentre os participantes e hoje sou um Locaweber! \o/
+Em 2018, me increvi no processo seletivo Quero Ser Dev Locaweb. Após ser aprovado na 1ª fase, em 2019, me mudei para São Paulo para participar de um curso na [Campus Code][campus] focado em Ruby on Rails e metodologia ágil. E foi uma experiência fantástica! Fui selecionado dentre os participantes e hoje sou um Locaweber! \o/
 
 <img src="/assets/images/campuscode.jpg" alt="Campus Code" title="Último dia dos participantes do programa Quero Ser Dev Locaweb na Campus Code. " class="center"/>
 
