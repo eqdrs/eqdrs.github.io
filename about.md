@@ -18,7 +18,7 @@ Em 2015, fui selecionado no Programa de Estágio da Petrobras, onde tive a oport
 
 Em 2018, me increvi no processo seletivo Quero Ser Dev Locaweb. Após ser aprovado na 1ª fase, em 2019, me mudei para São Paulo para participar de um curso na [Campus Code][campus] focado em Ruby on Rails e metodologia ágil. E foi uma das melhores experiências da minha vida! Fui selecionado dentre os participantes e hoje sou um Locaweber! \o/
 
-<img src="/assets/images/campuscode.jpg" alt="Petrobras" title="Último dia dos participantes do programa Quero Ser Dev Locaweb na Campus Code. " class="center"/>
+<img src="/assets/images/campuscode.jpg" alt="Campus Code" title="Último dia dos participantes do programa Quero Ser Dev Locaweb na Campus Code. " class="center"/>
 
 Hoje atuo como desenvolvedor, usando parte do meu tempo praticando e a outra parte estudando. Sinto que estou me tornando cada vez melhor! No trampo, uso tecnologias como Ruby on Rails, JavaScript, CSS, PostgreSQL, Redis, Git. Ultimamente tenho me interessado bastante por Python e suas possibilidades na área de Data Science.
 
