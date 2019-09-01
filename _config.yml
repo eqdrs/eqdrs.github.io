@@ -6,7 +6,8 @@ markdown: kramdown
 highlighter: rouge
 logo: '/assets/images/profile2.jpeg'
 paginate: 15
-baseurl: https://eqdrs.github.io/
+baseurl: /
+url: 'https://eqdrs.github.io/'
 domain_name: 'https://eqdrs.github.io/'
 google_analytics: 'UA-XXXXXXXX-X'
 gems: [jekyll-paginate]
