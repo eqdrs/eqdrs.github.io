@@ -1,0 +1,17 @@
+name: Everton Quadros
+description: Software Developer
+meta_description: "Everton Quadros personal website."
+
+markdown: kramdown
+highlighter: rouge
+logo: '/assets/images/profile2.jpeg'
+paginate: 15
+baseurl: https://eqdrs.github.io/
+domain_name: 'https://eqdrs.github.io/'
+google_analytics: 'UA-XXXXXXXX-X'
+gems: [jekyll-paginate]
+plugins: [jekyll-paginate]
+
+# Details for the RSS feed generator
+url:            'https://eqdrs.github.io'
+author:         'Everton Quadros'
