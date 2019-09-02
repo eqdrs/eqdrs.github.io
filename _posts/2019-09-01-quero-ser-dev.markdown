@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Incrições abertas: Quero Ser DEV Locaweb 2019"
-description: ""
+categories: ['Vagas']
 date:   2019-09-01 00:05:00
 cover: '/assets/images/campuscode3.jpg'
 ---

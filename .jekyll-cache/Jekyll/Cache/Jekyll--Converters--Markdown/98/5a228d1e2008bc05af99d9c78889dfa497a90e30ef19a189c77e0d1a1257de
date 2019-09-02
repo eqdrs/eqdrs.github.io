@@ -1,0 +1,17 @@
+I"�<p>Fala, pessoal! Tudo bem? Hoje vou trazer pra vocês alguns módulos do <a href="https://pydata.org/">PyData Stack</a>, conjunto de ferramentas do Python voltadas para análise de dados e machine learning.</p>
+
+<p>Dentre os principais pacotes que formam o stack de ciência de dados do Python, estão o NumPy, Pandas, Matplotlib, SciPy, Scikit-Learn, Bokeh, StatsModels e o Seaborn. Pretendo mostrar um pouco de cada um deles neste post.</p>
+
+<h5 id="numpy">NumPy</h5>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Importando o NumPy
+</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+</code></pre></div></div>
+
+<p>Aqui, pretendo registrar e compartilhar minhas experiências sobre desenvolvimento, tecnologia e até sobre minha vida. Acho que deve ajudar também a melhorar um pouco minhas habilidades pessoais.</p>
+
+<p>Gosto muito de <strong>Ruby on Rails</strong>, mas não pretendo me limitar a isso. Caso queira me conhecer melhor, leia [sobre Everton Quadros][about].</p>
+
+<p>E mais uma vez, sejam todos bem-vindos! =D</p>
+
+:ET

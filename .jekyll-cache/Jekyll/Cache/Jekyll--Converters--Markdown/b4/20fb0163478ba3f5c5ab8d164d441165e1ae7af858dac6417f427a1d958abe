@@ -1,0 +1,19 @@
+I"a<p>Fala, pessoal! Tudo bem? Hoje vou trazer pra vocês alguns módulos do <a href="https://pydata.org/">PyData Stack</a>, conjunto de ferramentas do Python voltadas para análise de dados e machine learning.</p>
+
+<p>Dentre os principais pacotes que formam o stack de ciência de dados do Python, estão o <a href="https://numpy.org/">NumPy</a>, Pandas, Matplotlib, SciPy, Scikit-Learn, Bokeh, StatsModels e o Seaborn. Pretendo mostrar um pouco de cada um deles neste post.</p>
+
+<p>Lembrando que, caso você já utilize o Anaconda, todos os pacotes citados acima já estão incluídos.</p>
+
+<h5 id="numpy">NumPy</h5>
+
+<p>O NumPy é um pacote voltado para computação matemática, e um dos mais importantes do PyData Stack. Ele oferece as bases matemáticas necessárias para construção de modelos de deep learning, machine learning e, consequentemente, aplicações de inteligência artificial. É possível utilizar os objetos nativos do NumPy para criação arrays ou matrizes, e assim usufruir das funções matemáticas oferecidas para operações com esses objetos.</p>
+
+<p>Vamos começar importando o NumPy. Também é possível utilizar: from numpy import *  . Isso evitará a utilização de np., mas este comando importará todos os módulos do NumPy.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Importando o NumPy
+</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+</code></pre></div></div>
+
+<p>Agora vamos criar um Array e utilizar os métodos fornecidos pelo NumPy:</p>
+
+:ET

@@ -5,9 +5,129 @@
     <description>Software Developer</description>
     <link>http://localhost:4000//</link>
     <atom:link href="http://localhost:4000//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 01 Sep 2019 18:40:46 -0300</pubDate>
-    <lastBuildDate>Sun, 01 Sep 2019 18:40:46 -0300</lastBuildDate>
+    <pubDate>Sun, 01 Sep 2019 22:20:02 -0300</pubDate>
+    <lastBuildDate>Sun, 01 Sep 2019 22:20:02 -0300</lastBuildDate>
     <generator>Jekyll v4.0.0</generator>
+    
+      <item>
+        <title>Módulos Python para Análise de Dados: Parte 1</title>
+        <description>&lt;p&gt;Fala, pessoal! Tudo bem? Hoje vou trazer pra vocês alguns módulos do &lt;a href=&quot;https://pydata.org/&quot;&gt;PyData Stack&lt;/a&gt;, conjunto de ferramentas do Python voltadas para análise de dados e machine learning.&lt;/p&gt;
+
+&lt;p&gt;Dentre os principais pacotes que formam o stack de ciência de dados do Python, estão o &lt;a href=&quot;https://numpy.org/&quot;&gt;NumPy&lt;/a&gt;, &lt;a href=&quot;https://pandas.pydata.org/&quot;&gt;Pandas&lt;/a&gt;, &lt;a href=&quot;https://matplotlib.org/&quot;&gt;Matplotlib&lt;/a&gt;, &lt;a href=&quot;https://www.scipy.org/&quot;&gt;SciPy&lt;/a&gt;, &lt;a href=&quot;https://scikit-learn.org/&quot;&gt;Scikit-Learn&lt;/a&gt;, &lt;a href=&quot;https://bokeh.pydata.org/en/latest/index.html&quot;&gt;Bokeh&lt;/a&gt;, &lt;a href=&quot;https://www.statsmodels.org/&quot;&gt;StatsModels&lt;/a&gt; e o &lt;a href=&quot;https://seaborn.pydata.org/&quot;&gt;Seaborn&lt;/a&gt;. Pretendo mostrar um pouco de cada um deles nesta sequência de posts.&lt;/p&gt;
+
+&lt;p&gt;Lembrando que, caso você já utilize o Anaconda, todos os pacotes citados acima já estão inclusos.&lt;/p&gt;
+
+&lt;h5 id=&quot;numpy&quot;&gt;NumPy&lt;/h5&gt;
+
+&lt;p&gt;O NumPy é um pacote voltado para computação matemática, e um dos mais importantes do PyData Stack. Ele oferece as bases matemáticas necessárias para construção de modelos de deep learning, machine learning e, consequentemente, aplicações de inteligência artificial. É possível utilizar os objetos nativos do NumPy para criação arrays ou matrizes, e assim usufruir das funções matemáticas oferecidas para operações com esses objetos.&lt;/p&gt;
+
+&lt;p&gt;Vamos começar importando o NumPy. Também é possível utilizar: from numpy import *  . Isso evitará a utilização de np., mas este comando importará todos os módulos do NumPy.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Importando o NumPy
+&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Agora vamos criar uma matriz e utilizar os alguns dos métodos fornecidos pelo NumPy:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Criando uma matriz a partir de uma lista de listas
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lista&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;13&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;81&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;22&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;34&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;59&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;21&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;48&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;94&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;matriz&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lista&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matriz&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; numpy.matrixlib.defmatrix.matrix
+&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Formato da matriz
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matriz&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; (3, 3)
+&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matriz&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dtype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; int64
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Também podemos utilizar o NumPy para realizar operações estatísticas, embora tenhamos outros pacotes do Python para isso, como por exemplo, o StatsModel, do qual irei falar na continuação deste post. Vamos ao exemplo:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;23&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;63&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;94&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;75&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Calculando a média dos valores
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; 54.0
+&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Calculando o desvio padrão (variação ou dispersão que existe em relação à média ou valor esperado)
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; 30.34468652004828
+&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Calculando a variância
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; 920.8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;pandas&quot;&gt;Pandas&lt;/h5&gt;
+
+&lt;p&gt;O Pandas é uma espécie de Excel para linguagem Python, com o qual é possível manipular dados estruturados das mais variadas formas. Ele é um dos componentes principais no portifólio Python para realizar análise de dados, por tornar mais simples o &lt;em&gt;“slice and dice”&lt;/em&gt; (fatiamento dos dados em diferentes perspectivas), além de seleção e agregações de subsets de dados.&lt;/p&gt;
+
+&lt;p&gt;Agora, vejamos como criar e manipular dataframes usando o Pandas. &lt;em&gt;Dataframes&lt;/em&gt; são estruturas muito similares a uma planilha de Excel, ou uma tabela em um banco de dados relacional: possui linhas e colunas, onde são armazenados dados estruturados.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pandas&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DataFrame&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Estado'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Santa Catarina'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'Paraná'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'Goiás'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'Bahia'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; 
+        &lt;span class=&quot;s&quot;&gt;'Ano'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2002&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2003&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2004&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2005&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; 
+        &lt;span class=&quot;s&quot;&gt;'População'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;1.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;3.6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;2.4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]}&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;frame&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;frame&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt;            Estado   Ano  População
+#   0  Santa Catarina  2002        1.5
+#   1          Paraná  2003        1.7
+#   2           Goiás  2004        3.6
+#   3           Bahia  2005        2.4
+&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;frame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; pandas.core.frame.DataFrame
+&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;frame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Estado'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; 0    Santa Catarina
+#   1            Paraná
+#   2             Goiás
+#   3             Bahia
+&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Resumo do Dataframe
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;frame&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;describe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt;                Ano  População
+#   count     4.000000   4.000000
+#   mean   2003.500000   2.300000
+#   std       1.290994   0.948683
+#   min    2002.000000   1.500000
+#   25%    2002.750000   1.650000
+#   50%    2003.500000   2.050000
+#   75%    2004.250000   2.700000
+#   max    2005.000000   3.600000
+&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;frame2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; array([['Santa Catarina', 2002, 1.5],
+#          ['Paraná', 2003, 1.7],
+#          ['Goiás', 2004, 3.6],
+#          ['Bahia', 2005, 2.4]], dtype=object)
+&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Visualizando uma coluna index
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;frame&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;set_index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Ano'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt;               Estado  População
+#   Ano                            
+#   2002  Santa Catarina        1.5
+#   2003          Paraná        1.7
+#   2004           Goiás        3.6
+#   2005           Bahia        2.4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;No próximo post, irei falar um pouco sobre os demais pacotes do PyData Stack, com mais alguns exemplos! Até mais! 👨‍💻🐍&lt;/p&gt;
+
+</description>
+        <pubDate>Sun, 01 Sep 2019 20:00:00 -0300</pubDate>
+        <link>http://localhost:4000//data%20science/2019/09/01/modulos-python-para-analise-de-dados-parte-1.html</link>
+        <guid isPermaLink="true">http://localhost:4000//data%20science/2019/09/01/modulos-python-para-analise-de-dados-parte-1.html</guid>
+        
+        
+        <category>Data Science</category>
+        
+      </item>
     
       <item>
         <title>Incrições abertas: Quero Ser DEV Locaweb 2019</title>
@@ -31,9 +151,11 @@
 
 </description>
         <pubDate>Sat, 31 Aug 2019 21:05:00 -0300</pubDate>
-        <link>http://localhost:4000//2019/08/31/quero-ser-dev.html</link>
-        <guid isPermaLink="true">http://localhost:4000//2019/08/31/quero-ser-dev.html</guid>
+        <link>http://localhost:4000//vagas/2019/08/31/quero-ser-dev.html</link>
+        <guid isPermaLink="true">http://localhost:4000//vagas/2019/08/31/quero-ser-dev.html</guid>
         
+        
+        <category>Vagas</category>
         
       </item>
     

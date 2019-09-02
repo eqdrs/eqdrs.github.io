@@ -1,0 +1,19 @@
+I"�<p>Fala, pessoal! Tudo bem? Hoje vou trazer pra vocês alguns módulos do <a href="https://pydata.org/">PyData Stack</a>, conjunto de ferramentas do Python voltadas para análise de dados e machine learning.</p>
+
+<h2 id="dentre-os-principais-pacotes-que-formam-o-stack-de-ciência-de-dados-do-python-estão-o-numpy-pandas-matplotlib-scipy-scikit-learn-bokeh-statsmodels-e-o-seaborn-pretendo-mostrar-um-pouco-de-cada-um-deles-neste-post">Dentre os principais pacotes que formam o stack de ciência de dados do Python, estão o NumPy, Pandas, Matplotlib, SciPy, Scikit-Learn, Bokeh, StatsModels e o Seaborn. Pretendo mostrar um pouco de cada um deles neste post.</h2>
+
+<h5 id="numpy">NumPy</h5>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">welcome</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+  <span class="nb">puts</span> <span class="s2">"Welcome to my blog, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">end</span>
+<span class="n">welcome</span><span class="p">(</span><span class="s1">'Tom'</span><span class="p">)</span>
+<span class="c1">#=&gt; prints 'Welcome to my blog, Tom' to STDOUT.</span></code></pre></figure>
+
+<p>Aqui, pretendo registrar e compartilhar minhas experiências sobre desenvolvimento, tecnologia e até sobre minha vida. Acho que deve ajudar também a melhorar um pouco minhas habilidades pessoais.</p>
+
+<p>Gosto muito de <strong>Ruby on Rails</strong>, mas não pretendo me limitar a isso. Caso queira me conhecer melhor, leia [sobre Everton Quadros][about].</p>
+
+<p>E mais uma vez, sejam todos bem-vindos! =D</p>
+
+:ET
