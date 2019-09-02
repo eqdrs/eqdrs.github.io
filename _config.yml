@@ -11,7 +11,9 @@ url: 'https://eqdrs.github.io/'
 domain_name: 'https://eqdrs.github.io/'
 google_analytics: 'UA-146875310-1'
 gems: [jekyll-paginate]
-plugins: [jekyll-paginate]
+plugins: 
+  - jekyll-paginate
+  - jekyll-seo-tag
 
 # Details for the RSS feed generator
 url:            'https://eqdrs.github.io'

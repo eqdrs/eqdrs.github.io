@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
     <!-- Customisation  -->
     <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+    <link rel="shortcut icon" type="image/png" href="/assets/images/favicon.png">
 
 </head>
 <body class="home-template">
@@ -70,13 +71,12 @@
 
 <p>Vamos começar importando o NumPy. Também é possível utilizar: from numpy import *  . Isso evitará a utilização de np., mas este comando importará todos os módulos do NumPy.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Importando o NumPy
-</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
-</code></pre></div></div>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># Importando o NumPy
+</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span></code></pre></figure>
 
 <p>Agora vamos criar uma matriz e utilizar os alguns dos métodos fornecidos pelo NumPy:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Criando uma matriz a partir de uma lista de listas
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># Criando uma matriz a partir de uma lista de listas
 </span><span class="n">lista</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">13</span><span class="p">,</span><span class="mi">81</span><span class="p">,</span><span class="mi">22</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">59</span><span class="p">],</span> <span class="p">[</span><span class="mi">21</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">94</span><span class="p">]]</span>
 <span class="n">matriz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">lista</span><span class="p">)</span>
 
@@ -88,12 +88,11 @@
 <span class="c1">#=&gt; (3, 3)
 </span>
 <span class="k">print</span><span class="p">(</span><span class="n">matriz</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
-<span class="c1">#=&gt; int64
-</span></code></pre></div></div>
+<span class="c1">#=&gt; int64</span></code></pre></figure>
 
 <p>Também podemos utilizar o NumPy para realizar operações estatísticas, embora tenhamos outros pacotes do Python para isso, como por exemplo, o StatsModel, do qual irei falar na continuação deste post. Vamos ao exemplo:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">15</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">63</span><span class="p">,</span> <span class="mi">94</span><span class="p">,</span> <span class="mi">75</span><span class="p">])</span>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">15</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">63</span><span class="p">,</span> <span class="mi">94</span><span class="p">,</span> <span class="mi">75</span><span class="p">])</span>
 
 <span class="c1"># Calculando a média dos valores
 </span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
@@ -105,8 +104,7 @@
 </span>
 <span class="c1"># Calculando a variância
 </span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-<span class="c1">#=&gt; 920.8
-</span></code></pre></div></div>
+<span class="c1">#=&gt; 920.8</span></code></pre></figure>
 
 <h5 id="pandas">Pandas</h5>
 
@@ -114,7 +112,55 @@
 
 <p>Agora, vejamos como criar e manipular dataframes usando o Pandas. <em>Dataframes</em> são estruturas muito similares a uma planilha de Excel, ou uma tabela em um banco de dados relacional: possui linhas e colunas, onde são armazenados dados estruturados.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">DataFrame</span>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+</pre></td><td class="code"><pre><span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">DataFrame</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Estado'</span><span class="p">:</span> <span class="p">[</span><span class="s">'Santa Catarina'</span><span class="p">,</span> <span class="s">'Paraná'</span><span class="p">,</span> <span class="s">'Goiás'</span><span class="p">,</span> <span class="s">'Bahia'</span><span class="p">],</span> 
         <span class="s">'Ano'</span><span class="p">:</span> <span class="p">[</span><span class="mi">2002</span><span class="p">,</span> <span class="mi">2003</span><span class="p">,</span> <span class="mi">2004</span><span class="p">,</span> <span class="mi">2005</span><span class="p">],</span> 
@@ -148,7 +194,7 @@
 #   75%    2004.250000   2.700000
 #   max    2005.000000   3.600000
 </span>
-<span class="n">frame2</span><span class="o">.</span><span class="n">values</span>
+<span class="n">frame</span><span class="o">.</span><span class="n">values</span>
 <span class="c1">#=&gt; array([['Santa Catarina', 2002, 1.5],
 #          ['Paraná', 2003, 1.7],
 #          ['Goiás', 2004, 3.6],
@@ -161,8 +207,8 @@
 #   2002  Santa Catarina        1.5
 #   2003          Paraná        1.7
 #   2004           Goiás        3.6
-#   2005           Bahia        2.4
-</span></code></pre></div></div>
+#   2005           Bahia        2.4</span>
+</pre></td></tr></tbody></table></code></pre></figure>
 
 <p>No próximo post, irei falar um pouco sobre os demais pacotes do PyData Stack, com mais alguns exemplos! Até mais! 👨‍💻🐍</p>
 
