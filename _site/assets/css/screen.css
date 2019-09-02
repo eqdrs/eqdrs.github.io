@@ -1356,7 +1356,7 @@ body:not(.post-template) .post-title {
         box-sizing: border-box;
         height: auto;
         min-height: 240px;
-        height: 60%;
+        height: 80%;
         padding: 15% 0;
     }
 
@@ -1468,7 +1468,7 @@ body:not(.post-template) .post-title {
 
     .main-header {
         margin-bottom: 15px;
-        height: 40%;
+        height: 70%;
     }
 
     .no-cover.main-header {
