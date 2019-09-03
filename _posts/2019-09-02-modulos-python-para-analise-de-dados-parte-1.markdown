@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Módulos Python para Análise de Dados: Parte 1"
+title:  "Bibliotecas Python para Análise de Dados Parte 1: NumPy e Pandas"
 date:   2019-09-01 23:00:00
 categories: ['Data Science']
 cover: '/assets/images/python.jpg'
@@ -12,7 +12,7 @@ Dentre os principais pacotes que formam o stack de ciência de dados do Python, 
 
 Lembrando que, caso você já utilize o Anaconda, todos os pacotes citados acima já estão inclusos.
 
-##### NumPy
+#### NumPy
 
 O NumPy é um pacote voltado para computação matemática, e um dos mais importantes do PyData Stack. Ele oferece as bases matemáticas necessárias para construção de modelos de deep learning, machine learning e, consequentemente, aplicações de inteligência artificial. É possível utilizar os objetos nativos do NumPy para criação arrays ou matrizes, e assim usufruir das funções matemáticas oferecidas para operações com esses objetos.
 
@@ -59,7 +59,7 @@ np.var(A)
 #=> 920.8
 {% endhighlight %}
 
-##### Pandas
+#### Pandas
 
 O Pandas é uma espécie de Excel para linguagem Python, com o qual é possível manipular dados estruturados das mais variadas formas. Ele é um dos componentes principais no portifólio Python para realizar análise de dados, por tornar mais simples o *"slice and dice"* (fatiamento dos dados em diferentes perspectivas), além de seleção e agregações de subsets de dados.
 
@@ -116,7 +116,7 @@ print(frame.set_index('Ano'))
 #   2005           Bahia        2.4
 {% endhighlight %}
 
-No próximo post, irei falar um pouco sobre os demais pacotes do PyData Stack, com mais alguns exemplos! Até mais! 👨‍💻🐍
+No [próximo post][parte2], irei falar um pouco sobre os demais pacotes do PyData Stack, com mais alguns exemplos! Até mais! 👨‍💻🐍
 
 [pydata]: https://pydata.org/
 [numpy]: https://numpy.org/
@@ -127,3 +127,4 @@ No próximo post, irei falar um pouco sobre os demais pacotes do PyData Stack, c
 [bokeh]: https://bokeh.pydata.org/en/latest/index.html
 [statsmodels]: https://www.statsmodels.org/
 [seaborn]: https://seaborn.pydata.org/
+[parte2]: https://eqdrs.github.io/data%20science/2019/09/03/modulos-python-para-analise-de-dados-parte-2.html
