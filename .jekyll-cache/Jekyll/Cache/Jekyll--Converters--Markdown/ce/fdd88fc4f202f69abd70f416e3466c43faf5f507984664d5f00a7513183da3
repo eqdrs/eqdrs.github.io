@@ -1,4 +1,4 @@
-I"v%<p>Fala, pessoal! Tudo bem? Hoje vou trazer pra vocês alguns módulos do <a href="https://pydata.org/">PyData Stack</a>, conjunto de ferramentas do Python voltadas para análise de dados e machine learning.</p>
+I"�%<p>Fala, pessoal! Tudo bem? Hoje vou trazer pra vocês alguns módulos do <a href="https://pydata.org/">PyData Stack</a>, conjunto de ferramentas do Python voltadas para análise de dados e machine learning.</p>
 
 <p>Dentre os principais pacotes que formam o stack de ciência de dados do Python, estão o <a href="https://numpy.org/">NumPy</a>, <a href="https://pandas.pydata.org/">Pandas</a>, <a href="https://matplotlib.org/">Matplotlib</a>, <a href="https://www.scipy.org/">SciPy</a>, <a href="https://scikit-learn.org/">Scikit-Learn</a>, <a href="https://bokeh.pydata.org/en/latest/index.html">Bokeh</a>, <a href="https://www.statsmodels.org/">StatsModels</a> e o <a href="https://seaborn.pydata.org/">Seaborn</a>. Pretendo mostrar um pouco de cada um deles nesta sequência de posts.</p>
 
@@ -149,6 +149,6 @@
 #   2005           Bahia        2.4</span>
 </pre></td></tr></tbody></table></code></pre></figure>
 
-<p>No <a href="/data%20science/2019/09/02/modulos-python-para-analise-de-dados-parte-2.html">próximo post</a>, irei falar um pouco sobre os demais pacotes do PyData Stack, com mais alguns exemplos! Até mais! 👨‍💻🐍</p>
+<p>No <a href="https://eqdrs.github.io/data%20science/2019/09/03/modulos-python-para-analise-de-dados-parte-2.html">próximo post</a>, irei falar um pouco sobre os demais pacotes do PyData Stack, com mais alguns exemplos! Até mais! 👨‍💻🐍</p>
 
 :ET
