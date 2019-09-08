@@ -12,7 +12,7 @@ O [SciPy][scipy] é uma biblioteca voltada para computação científica. O conj
 
 *Talk is cheap! **Show me the code**!*
 
-#### Aplicação em Álgebra Linear
+#### Exemplo de aplicação em Álgebra Linear
 <p />
 
 {% highlight python linenos %}
@@ -97,7 +97,7 @@ x_min
 {% endhighlight %}
 
 ----
-Lembrando que, para compreender o SciPy é necessário entender alguns conceitos um pouco mais avançados de Matemática e Estatística. [Neste link][doc], você encontra a documentação oficial do SciPy. Abaixo, vou deixar uma lista com o conjunto de pacotes para operações matemáticas e científicas disponíveis nele.
+Estas são apenas algumas das muitas possibilidades oferecidas pelo SciPy. Lembrando que, para compreendê-lo é necessário entender alguns conceitos um pouco mais avançados de Matemática e Estatística. [Neste link][doc], você encontra a documentação oficial do SciPy. Abaixo, vou deixar uma lista com o conjunto de pacotes para operações matemáticas e científicas disponíveis nele.
 
 <table class="ArticleTableNoBorder">
 	<tbody>

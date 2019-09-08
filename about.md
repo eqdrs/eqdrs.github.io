@@ -1,7 +1,6 @@
 ---
 layout: page
 title: Sobre Everton Quadros
-cover: '/assets/images/cover2.jpeg'
 ---
 
 Sou desenvolvedor e estudante de Engenharia da Computação na UFBA. Nasci em Salvador-BA, mas atualmente moro em São Paulo, onde trabalho como Dev.
