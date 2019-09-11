@@ -1,12 +1,12 @@
 ---
 layout: post
 title:  "Controlando a trajetória de um robô diferencial: Follow the line!"
-date:   2019-09-07 12:00:00
+date:   2019-09-09 01:00:00
 categories: ['Robotics']
 cover: '/assets/images/vehicle.png'
 ---
 
-Olá, pessoal! Tudo bem? Hoje, iremos projetar e implementar controladores para um veículo diferencial, que serão responsáveis por fazê-lo seguir uma linha definida em um plano. Para isso, usaremos o [Octave][octave], uma linguagem computacional desenvolvida para computação matemática e que possui compatibilidade com [MATLAB][matlab]. Você pode fazer o download do executável do Octave [clicando aqui][download]. 
+Olá, pessoal! Tudo bem? Hoje, iremos projetar e simular controladores para um veículo diferencial, que serão responsáveis por fazê-lo seguir uma linha definida em um plano. Para isso, usaremos o [Octave][octave], uma linguagem computacional desenvolvida para computação matemática e que possui compatibilidade com [MATLAB][matlab]. Você pode fazer o download do executável do Octave [clicando aqui][download]. 
 
 ![Octave][robo5]
 
@@ -34,7 +34,7 @@ Combinando as equações dos dois controladores, temos a nossa lei de controle d
 
 ![eq5][eq5]
 
-Agora vamos ao código!
+Agora, vamos ao código!
 
 ##### Função de simulação do veículo diferencial
 <p />
@@ -54,8 +54,8 @@ function [P1, vr, wr] = vehicle_diff(P0, v, w, ts)
 %   wd = velocidade angular da roda direita
 %   we = velocidade angular da roda esquerda
 %   ts = periodo de amostragem [s]
-%   l = 0.2 [m] espaco entre as duas rodas
-%   r = 0.05 [m] raio das rodas
+%   l = espaco entre as duas rodas [m]
+%   r = raio das rodas [m]
 l = 0.09;
 r = 0.05;
 
@@ -93,8 +93,8 @@ Criaremos agora um arquivo chamado `navigation_controller.m`, no qual iremos imp
 % P1 = posicao estimada 
 % x,y,theta = trajetoria do robo
 % i = amostras
-% v = velocidade de referencia linear do centro de massa do robo
-% w = velocidade de referencia angular do centro de massa do robo
+% vref = velocidade de referencia linear do centro de massa do robo
+% wref = velocidade de referencia angular do centro de massa do robo
 % vrobo = velocidade linear do robo [m/s]
 % wrobo = velocidade angular do robo [rad/s]
 % Kd = Constante de Ganho

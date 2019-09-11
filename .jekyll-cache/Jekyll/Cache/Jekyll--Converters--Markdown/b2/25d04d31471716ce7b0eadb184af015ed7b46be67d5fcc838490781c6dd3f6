@@ -1,0 +1,3 @@
+I"<<p>Olá, pessoal! Tudo bem? Hoje, iremos projetar e simular controladores para um veículo diferencial, que serão responsáveis por fazê-lo seguir uma linha definida em um plano. Para isso, usaremos o <a href="https://www.gnu.org/software/octave/">Octave</a>, uma linguagem computacional desenvolvida para computação matemática e que possui compatibilidade com <a href="https://www.mathworks.com/products/matlab.html">MATLAB</a>. Você pode fazer o download do executável do Octave <a href="https://www.gnu.org/software/octave/download.html">clicando aqui</a>.</p>
+
+:ET

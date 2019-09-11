@@ -5,13 +5,13 @@
     <description>Software Developer</description>
     <link>http://localhost:4000//</link>
     <atom:link href="http://localhost:4000//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 08 Sep 2019 16:51:39 -0300</pubDate>
-    <lastBuildDate>Sun, 08 Sep 2019 16:51:39 -0300</lastBuildDate>
+    <pubDate>Tue, 10 Sep 2019 23:58:46 -0300</pubDate>
+    <lastBuildDate>Tue, 10 Sep 2019 23:58:46 -0300</lastBuildDate>
     <generator>Jekyll v4.0.0</generator>
     
       <item>
         <title>Controlando a trajetória de um robô diferencial: Follow the line!</title>
-        <description>&lt;p&gt;Olá, pessoal! Tudo bem? Hoje, iremos projetar e implementar controladores para um veículo diferencial, que serão responsáveis por fazê-lo seguir uma linha definida em um plano. Para isso, usaremos o &lt;a href=&quot;https://www.gnu.org/software/octave/&quot;&gt;Octave&lt;/a&gt;, uma linguagem computacional desenvolvida para computação matemática e que possui compatibilidade com &lt;a href=&quot;https://www.mathworks.com/products/matlab.html&quot;&gt;MATLAB&lt;/a&gt;. Você pode fazer o download do executável do Octave &lt;a href=&quot;https://www.gnu.org/software/octave/download.html&quot;&gt;clicando aqui&lt;/a&gt;.&lt;/p&gt;
+        <description>&lt;p&gt;Olá, pessoal! Tudo bem? Hoje, iremos projetar e simular controladores para um veículo diferencial, que serão responsáveis por fazê-lo seguir uma linha definida em um plano. Para isso, usaremos o &lt;a href=&quot;https://www.gnu.org/software/octave/&quot;&gt;Octave&lt;/a&gt;, uma linguagem computacional desenvolvida para computação matemática e que possui compatibilidade com &lt;a href=&quot;https://www.mathworks.com/products/matlab.html&quot;&gt;MATLAB&lt;/a&gt;. Você pode fazer o download do executável do Octave &lt;a href=&quot;https://www.gnu.org/software/octave/download.html&quot;&gt;clicando aqui&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/robo5.jpeg&quot; alt=&quot;Octave&quot; /&gt;&lt;/p&gt;
 
@@ -39,7 +39,7 @@
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/eq5.jpeg&quot; alt=&quot;eq5&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Agora vamos ao código!&lt;/p&gt;
+&lt;p&gt;Agora, vamos ao código!&lt;/p&gt;
 
 &lt;h5 id=&quot;função-de-simulação-do-veículo-diferencial&quot;&gt;Função de simulação do veículo diferencial&lt;/h5&gt;
 &lt;p /&gt;
@@ -355,19 +355,282 @@
 &lt;img src=&quot;/assets/images/robo1.jpg&quot; alt=&quot;robo1&quot; /&gt;
 &lt;img src=&quot;/assets/images/robo2.jpg&quot; alt=&quot;robo2&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Como podemos ver, à medida que o robô se aproxima da linha, sua velocidade angular vai se tornando mais estável e tendendo a zero. Após aproximadamente 20 amostras, o robô consegue se guiar exatamente sobre a linha que foi definida!&lt;/p&gt;
+&lt;p&gt;Como podemos ver, à medida que o robô se aproxima da linha, sua velocidade angular vai se tornando mais estável e tendendo a zero. Após aproximadamente 20 amostras, o robô consegue se guiar sobre a linha que foi definida!&lt;/p&gt;
 
 &lt;p&gt;Se quiserem se aprofundar um pouco mais nesta experiência, podem consultar o livro do Peter Corke &lt;em&gt;“Robotics, Vision and Control – Fundamental Algorithms in Matlab”&lt;/em&gt;. O método &lt;em&gt;Following a line&lt;/em&gt; é apresentado a partir da página 72 do livro, na seção 4.2.2.&lt;/p&gt;
 
 &lt;p&gt;Espero que tenham gostado! Até o próximo post! 💕&lt;/p&gt;
 
 </description>
-        <pubDate>Sat, 07 Sep 2019 09:00:00 -0300</pubDate>
-        <link>http://localhost:4000//robotics/2019/09/07/wheeled-robots-following-a-line.html</link>
-        <guid isPermaLink="true">http://localhost:4000//robotics/2019/09/07/wheeled-robots-following-a-line.html</guid>
+        <pubDate>Sun, 08 Sep 2019 22:00:00 -0300</pubDate>
+        <link>http://localhost:4000//robotics/2019/09/08/wheeled-robots-following-a-line.html</link>
+        <guid isPermaLink="true">http://localhost:4000//robotics/2019/09/08/wheeled-robots-following-a-line.html</guid>
         
         
         <category>Robotics</category>
+        
+      </item>
+    
+      <item>
+        <title>Implementando um analisador léxico usando o Flex</title>
+        <description>&lt;p&gt;A análise léxica é a primeira fase do processo de compilação de um programa, responsável por fazer a leitura do código fonte, caractere a caractere, especificando os tokens e lexemas da linguagem. Neste post, iremos implementar e testar um analisador léxico para uma linguagem inspirada em C. E faremos isso usando o Flex!&lt;/p&gt;
+
+&lt;p&gt;O &lt;a href=&quot;https://www.gnu.org/software/flex/&quot;&gt;Flex&lt;/a&gt; (Fast Lexical Analyzer Generator) é uma ferramenta gratuita e open-source para geração de analisadores léxicos. Ela foi escrita em C, por volta de 1987, pelo Professor &lt;a href=&quot;https://en.wikipedia.org/wiki/Vern_Paxson&quot;&gt;Vern Paxson&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h5 id=&quot;instalando-o-flex&quot;&gt;Instalando o Flex&lt;/h5&gt;
+&lt;p /&gt;
+
+&lt;p&gt;Para instalar o Flex no Ubuntu, basta abrir o seu terminal (Ctrl + Alt + T) e executar os comandos abaixo:&lt;/p&gt;
+
+&lt;pre&gt;
+sudo apt-get update
+sudo apt-get install flex
+&lt;/pre&gt;
+
+&lt;p&gt;Pronto! Já podemos utilizar os recursos do Flex!&lt;/p&gt;
+
+&lt;h5 id=&quot;definindo-uma-convenção-léxica-para-a-linguagem&quot;&gt;Definindo uma convenção léxica para a linguagem&lt;/h5&gt;
+&lt;p /&gt;
+
+&lt;p&gt;Nossa linguagem será simples e procedimental, um subconjunto inspirado na linguagem C, que inclui somente variáveis inteiras, array de inteiros, funções, condição, e repetição. A linguagem seguirá as convenções definidas a seguir.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Na implementação, iremos considerar as seguintes classes de tokens na linguagem:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;
+  &lt;b&gt;ID&lt;/b&gt;      Identificador
+  &lt;b&gt;NUM&lt;/b&gt;     Literal decimal (inteiro)
+  &lt;b&gt;KEY&lt;/b&gt;     Palavra-chave
+  &lt;b&gt;SYM&lt;/b&gt;     Símbolos léxicos
+  &lt;b&gt;ERROR&lt;/b&gt;   Lexema do primeiro erro encontrado
+&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;As palavras revervadas (keywords) serão as seguintes:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;
+  &lt;b&gt;else   if   int   return   void   while&lt;/b&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Elas &lt;strong&gt;não&lt;/strong&gt; poderão ser usadas como nomes de variáveis/funções, e devem ser escritas em minúsculo.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Os símbolos especiais serão:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;
+  &lt;b&gt;!  &amp;amp;&amp;amp;  ||   +  -  *  /  &amp;lt;  &amp;lt;=  &amp;gt;  &amp;gt;=  ==  !=  =  ;  ,  (  )  [  ]  {  }  /*  */&lt;/b&gt;
+&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Os outros lexemas são o ID e NUM, definidos pelas expressões regulares abaixo:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;
+  &lt;b&gt;ID&lt;/b&gt; = letter (letter | digit)*
+  &lt;b&gt;NUM&lt;/b&gt; = digit digit*
+  &lt;b&gt;letter&lt;/b&gt; = a | .. | z | A | .. | Z
+  &lt;b&gt;digit&lt;/b&gt; = 0 | .. | 9
+&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Haverá distinção entre letras em maiúsculo e minúsculo.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Os espaços em branco consistem em caracter branco (‘ ‘), quebra-de-linha (‘\n’), e tabs (‘\t’). Eles deverão ser ignorados, exceto quando for necessário separar os ID’s e NUM’s, e palavras reservadas.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Comentários serão escritos da mesma forma que na linguagem C, usando a notação /* …  */. Poderão ser inseridos em qualquer parte do código onde é permitido colocar espaços em branco, isto é, comentários &lt;strong&gt;não&lt;/strong&gt; poderão ser inseridos dentro de tokens, e podem incluir mais de uma linha.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;desenvolvendo-o-arquivo-flex&quot;&gt;Desenvolvendo o arquivo Flex&lt;/h5&gt;
+&lt;p /&gt;
+
+&lt;p&gt;O código flex é dividido em três seções:&lt;/p&gt;
+
+&lt;pre&gt;
+  &lt;b&gt;definições&lt;/b&gt;
+  %%
+  &lt;b&gt;regras&lt;/b&gt;
+  %%
+  &lt;b&gt;código do usuário&lt;/b&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Para a linguagem que definimos, criaremos um arquivo chamado &lt;code class=&quot;highlighter-rouge&quot;&gt;lexico.l&lt;/code&gt; com o código abaixo. Notem que ele é dividido em três seções, onde, na seção intermediária, definimos a ação a ser tomada para cada &lt;em&gt;pattern&lt;/em&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-l&quot;&gt;digit[0-9]
+letter[a-zA-Z]
+ID[a-zA-Z][a-zA-Z0-9]*
+WHITESPACE[ ]
+quebra[\n]
+TAB[\t]
+
+%{
+    #define YY_DECL extern &quot;C&quot; int yylex()
+    #include&amp;lt;string&amp;gt;
+    #include&amp;lt;iostream&amp;gt;
+    using namespace std;
+    FILE *out ;
+	int linha;
+%}
+%option yylineno
+%x COMMENT
+
+%%
+
+{quebra}
+
+&quot;/*&quot; { linha=yylineno; BEGIN(COMMENT); }
+
+&amp;lt;COMMENT&amp;gt;&quot;*/&quot; { BEGIN(INITIAL); }
+
+&amp;lt;COMMENT&amp;gt;(.|\n);
+
+&amp;lt;COMMENT&amp;gt;&amp;lt;&amp;lt;EOF&amp;gt;&amp;gt; {fprintf(out,&quot;(%d,ERROR,\&quot;/*\&quot;)\n&quot;,linha); return 0;}
+
+else|if|int|return|void|while {fprintf(out,&quot;(%d,KEY,\&quot;%s\&quot;)\n&quot;,yylineno ,yytext);} 
+
+&quot;+&quot;|&quot;-&quot;|&quot;*&quot;|&quot;/&quot;|&quot;&amp;lt;&quot;|&quot;&amp;lt;=&quot;|&quot;&amp;gt;&quot;|&quot;&amp;gt;=&quot;|&quot;==&quot;|&quot;!=&quot;|&quot;=&quot;|&quot;;&quot;|&quot;,&quot;|&quot;(&quot;|&quot;)&quot;|&quot;[&quot;|&quot;]&quot;|&quot;{&quot;|&quot;}&quot; {fprintf(out,&quot;(%d,SYM,\&quot;%s\&quot;)\n&quot;,yylineno,yytext);}
+
+{WHITESPACE}+|{quebra}|{TAB}+
+ 
+{digit}+ {fprintf(out,&quot;(%d,NUM,\&quot;%s\&quot;)\n&quot;,yylineno,yytext);}
+
+{digit}+{ID}+ {fprintf(out,&quot;(%d,ERROR,\&quot;%s\&quot;)\n&quot;,yylineno,yytext); return 0;}
+
+{ID}+ {fprintf(out,&quot;(%d,ID,\&quot;%s\&quot;)\n&quot;,yylineno,yytext);}
+
+. {fprintf(out,&quot;(%d,ERROR,\&quot;%s\&quot;)\n&quot;,yylineno,yytext); return 0;}
+
+%%
+
+int yywrap();
+
+int main(int argc, char *argv[]){
+    FILE *arquivo = fopen(argv[1],&quot;r&quot;);
+    if (!arquivo) {
+      cout &amp;lt;&amp;lt; &quot;Arquivo inexistente&quot; &amp;lt;&amp;lt; endl;
+      return -1;
+    }
+    yyin = arquivo;
+    out = fopen(argv[2],&quot;w&quot;);
+    yylex();
+    return 0;
+}
+
+int yywrap(){
+    return 1;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&quot;gerando-o-arquivo-lexyyc&quot;&gt;Gerando o arquivo lex.yy.c&lt;/h5&gt;
+&lt;p /&gt;
+
+&lt;p&gt;Após criarmos o arquivo &lt;code class=&quot;highlighter-rouge&quot;&gt;lexico.l&lt;/code&gt; com as regras para o nosso analisador léxico, vamos gerar um arquivo chamado &lt;code class=&quot;highlighter-rouge&quot;&gt;lex.yy.c&lt;/code&gt;, usando o Flex. Para isso, basta executar o comando abaixo no terminal:&lt;/p&gt;
+
+&lt;pre&gt;
+flex lexico.l
+&lt;/pre&gt;
+
+&lt;p&gt;Isso irá criar o &lt;code class=&quot;highlighter-rouge&quot;&gt;lex.yy.c&lt;/code&gt; no mesmo diretório. Esse arquivo contém uma função chamada &lt;code class=&quot;highlighter-rouge&quot;&gt;yylex()&lt;/code&gt;, que retorna 1 sempre que uma expressão especificada for encontrada no arquivo de entrada, e 0 quando o final do arquivo for atingido. Cada chamada à função &lt;code class=&quot;highlighter-rouge&quot;&gt;yylex()&lt;/code&gt; analisa um token; quando a função é chamada novamente, ela começa de onde parou.&lt;/p&gt;
+
+&lt;h5 id=&quot;gerando-o-executável&quot;&gt;Gerando o executável&lt;/h5&gt;
+
+&lt;p&gt;Para gerar o executável, vamos compilar o arquivo gerado pelo Flex através do comando:&lt;/p&gt;
+
+&lt;pre&gt;
+g++ lex.yy.c -lfl -o lexico
+&lt;/pre&gt;
+
+&lt;h5 id=&quot;testando-nosso-analisador-léxico&quot;&gt;Testando nosso analisador léxico&lt;/h5&gt;
+&lt;p /&gt;
+
+&lt;p&gt;Agora vamos testar nosso analisador léxico! Para isto, iremos criar um arquivo de exemplo chamado &lt;code class=&quot;highlighter-rouge&quot;&gt;main.c&lt;/code&gt;, que irá conter o nosso programa-fonte:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;cm&quot;&gt;/* main.c */&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;  &lt;span class=&quot;cm&quot;&gt;/* Testando
+              comentário
+              em bloco. */&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Para iniciar a análise léxica, basta executar o comando seguinte comando no terminal:&lt;/p&gt;
+
+&lt;pre&gt;
+./lexico main.c main.lex
+&lt;/pre&gt;
+
+&lt;p&gt;Com isso, será gerado um arquivo chamado &lt;code class=&quot;highlighter-rouge&quot;&gt;main.lex&lt;/code&gt; no mesmo diretório, contendo o resultado da análise léxica do nosso código-fonte:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;KEY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;void&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;main&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SYM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;(&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;KEY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;void&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SYM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;)&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SYM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;KEY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;int&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;a&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SYM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;a&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SYM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;=&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NUM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;10&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SYM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;KEY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;if&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SYM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;(&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;a&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SYM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NUM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;9&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SYM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;)&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SYM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;a&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SYM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;=&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SYM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;(&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NUM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;4&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SYM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;+&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NUM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;5&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SYM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;)&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SYM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NUM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;3&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SYM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SYM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SYM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Podemos ver que o nosso analisador léxico identificou todos os tokens e suas respectivas classes, como era esperado! Além disso, todos os comentários, tabs e quebras de linha foram ignorados, como também já prevíamos. \o/&lt;/p&gt;
+
+&lt;p&gt;No processo de compilação de um programa, essas informações são enviadas posteriormente para o analisador sintático, responsável por gerar uma estrutura de dados a partir do código-fonte e verificar se ela está de acordo com a gramática que foi definida para a linguagem. Mas isso já é assunto para um próximo post!&lt;/p&gt;
+
+&lt;p&gt;Caso queira se aprofundar ainda mais nessa área, recomendo o &lt;a href=&quot;http://www.stanford.edu/class/cs143&quot;&gt;curso de compiladores da Stanford&lt;/a&gt; (em inglês).&lt;/p&gt;
+
+&lt;p&gt;Obrigado a tod@s, e até mais! 😊&lt;/p&gt;
+
+</description>
+        <pubDate>Sun, 08 Sep 2019 09:00:00 -0300</pubDate>
+        <link>http://localhost:4000//compilers/2019/09/08/implementando-um-analisador-lexico-usando-o-flex.html</link>
+        <guid isPermaLink="true">http://localhost:4000//compilers/2019/09/08/implementando-um-analisador-lexico-usando-o-flex.html</guid>
+        
+        
+        <category>Compilers</category>
         
       </item>
     
@@ -954,11 +1217,11 @@
 
 </description>
         <pubDate>Fri, 30 Aug 2019 20:03:00 -0300</pubDate>
-        <link>http://localhost:4000//apresenta%C3%A7%C3%A3o/2019/08/30/hello-world.html</link>
-        <guid isPermaLink="true">http://localhost:4000//apresenta%C3%A7%C3%A3o/2019/08/30/hello-world.html</guid>
+        <link>http://localhost:4000//hello%20word/2019/08/30/hello-world.html</link>
+        <guid isPermaLink="true">http://localhost:4000//hello%20word/2019/08/30/hello-world.html</guid>
         
         
-        <category>Apresentação</category>
+        <category>Hello Word</category>
         
       </item>
     

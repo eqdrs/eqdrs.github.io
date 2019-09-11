@@ -1,0 +1,2 @@
+I"R<p>A análise léxica é a primeira fase do processo de compilação de um programa, responsável por fazer a leitura do código fonte, caractere a caractere, especificando os tokens e lexemas da linguagem. Neste post, iremos implementar e testar um analisador léxico para uma linguagem inspirada em C. E faremos isso usando o Flex!</p>
+:ET

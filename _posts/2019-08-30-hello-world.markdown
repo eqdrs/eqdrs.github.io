@@ -2,7 +2,7 @@
 layout: post
 title:  "Hello World!"
 date:   2019-08-30 23:03:00
-categories: ['Apresentação']
+categories: ['Hello Word']
 ---
 
 Como de costume, um primeiro post para dar as boas-vindas!

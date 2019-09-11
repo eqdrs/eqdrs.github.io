@@ -1,4 +1,4 @@
-I">V<p>Olá, pessoal! Tudo bem? Hoje, iremos projetar e implementar controladores para um veículo diferencial, que serão responsáveis por fazê-lo seguir uma linha definida em um plano. Para isso, usaremos o <a href="https://www.gnu.org/software/octave/">Octave</a>, uma linguagem computacional desenvolvida para computação matemática e que possui compatibilidade com <a href="https://www.mathworks.com/products/matlab.html">MATLAB</a>. Você pode fazer o download do executável do Octave <a href="https://www.gnu.org/software/octave/download.html">clicando aqui</a>.</p>
+I"0V<p>Olá, pessoal! Tudo bem? Hoje, iremos projetar e simular controladores para um veículo diferencial, que serão responsáveis por fazê-lo seguir uma linha definida em um plano. Para isso, usaremos o <a href="https://www.gnu.org/software/octave/">Octave</a>, uma linguagem computacional desenvolvida para computação matemática e que possui compatibilidade com <a href="https://www.mathworks.com/products/matlab.html">MATLAB</a>. Você pode fazer o download do executável do Octave <a href="https://www.gnu.org/software/octave/download.html">clicando aqui</a>.</p>
 
 <p><img src="/assets/images/robo5.jpeg" alt="Octave" /></p>
 
@@ -26,7 +26,7 @@
 
 <p><img src="/assets/images/eq5.jpeg" alt="eq5" /></p>
 
-<p>Agora vamos ao código!</p>
+<p>Agora, vamos ao código!</p>
 
 <h5 id="função-de-simulação-do-veículo-diferencial">Função de simulação do veículo diferencial</h5>
 <p />
@@ -342,7 +342,7 @@
 <img src="/assets/images/robo1.jpg" alt="robo1" />
 <img src="/assets/images/robo2.jpg" alt="robo2" /></p>
 
-<p>Como podemos ver, à medida que o robô se aproxima da linha, sua velocidade angular vai se tornando mais estável e tendendo a zero. Após aproximadamente 20 amostras, o robô consegue se guiar exatamente sobre a linha que foi definida!</p>
+<p>Como podemos ver, à medida que o robô se aproxima da linha, sua velocidade angular vai se tornando mais estável e tendendo a zero. Após aproximadamente 20 amostras, o robô consegue se guiar sobre a linha que foi definida!</p>
 
 <p>Se quiserem se aprofundar um pouco mais nesta experiência, podem consultar o livro do Peter Corke <em>“Robotics, Vision and Control – Fundamental Algorithms in Matlab”</em>. O método <em>Following a line</em> é apresentado a partir da página 72 do livro, na seção 4.2.2.</p>
 
