@@ -1,4 +1,4 @@
-I"C7<p>A análise léxica é a primeira fase do processo de compilação de um programa, responsável por fazer a leitura do código fonte, caractere a caractere, especificando os tokens e lexemas da linguagem. Neste post, iremos implementar e testar um analisador léxico para uma linguagem inspirada em C. E faremos isso usando o Flex!</p>
+I"b7<p>A análise léxica é a primeira fase do processo de compilação de um programa, responsável por fazer a leitura do código fonte, caractere a caractere, especificando os tokens e lexemas da linguagem. Neste post, iremos implementar e testar um analisador léxico para uma linguagem inspirada em C. E faremos isso usando o Flex!</p>
 
 <p>O <a href="https://www.gnu.org/software/flex/">Flex</a> (Fast Lexical Analyzer Generator) é uma ferramenta gratuita e open-source para geração de analisadores léxicos. Ela foi escrita em C, por volta de 1987, pelo Professor <a href="https://en.wikipedia.org/wiki/Vern_Paxson">Vern Paxson</a>.</p>
 
@@ -200,7 +200,7 @@ g++ lex.yy.c -lfl -o lexico
 <span class="p">}</span>
 </pre></td></tr></tbody></table></code></pre></figure>
 
-<p>Para iniciar a análise léxica, basta executar o comando seguinte comando no terminal:</p>
+<p>Para iniciar a análise léxica, basta executar o seguinte comando no terminal:</p>
 
 <pre>
 ./lexico main.c main.lex
@@ -245,7 +245,7 @@ g++ lex.yy.c -lfl -o lexico
 
 <p>No processo de compilação de um programa, essas informações são enviadas posteriormente para o analisador sintático, responsável por gerar uma estrutura de dados a partir do código-fonte e verificar se ela está de acordo com a gramática que foi definida para a linguagem. Mas isso já é assunto para um próximo post!</p>
 
-<p>Caso queira se aprofundar ainda mais nessa área, recomendo o <a href="http://www.stanford.edu/class/cs143">curso de compiladores da Stanford</a> (em inglês).</p>
+<p>Caso queira se aprofundar ainda mais nessa área, recomendo o <a href="https://lagunita.stanford.edu/courses/Engineering/Compilers/Fall2014/about">curso de compiladores da Stanford</a> (em inglês).</p>
 
 <p>Obrigado a tod@s, e até mais! 😊</p>
 

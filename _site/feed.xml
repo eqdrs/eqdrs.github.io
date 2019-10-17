@@ -5,9 +5,36 @@
     <description>Software Developer</description>
     <link>http://localhost:4000//</link>
     <atom:link href="http://localhost:4000//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 10 Sep 2019 23:58:46 -0300</pubDate>
-    <lastBuildDate>Tue, 10 Sep 2019 23:58:46 -0300</lastBuildDate>
+    <pubDate>Wed, 16 Oct 2019 21:36:47 -0300</pubDate>
+    <lastBuildDate>Wed, 16 Oct 2019 21:36:47 -0300</lastBuildDate>
     <generator>Jekyll v4.0.0</generator>
+    
+      <item>
+        <title>Hacktoberfest 2019</title>
+        <description>&lt;p&gt;Neste mês de outubro está acontecendo a Hacktoberfest, evento organizado pela &lt;a href=&quot;https://www.digitalocean.com/&quot;&gt;DigitalOcean&lt;/a&gt; e pela &lt;a href=&quot;https://dev.to/&quot;&gt;DEV&lt;/a&gt;. A proposta é bem simples: apoie o open-source e ganhe uma camisa exclusiva!&lt;/p&gt;
+
+&lt;p&gt;Para participar, basta se inscrever no &lt;a href=&quot;https://hacktoberfest.digitalocean.com/&quot;&gt;site oficial do evento&lt;/a&gt; com sua conta do GitHub e contribuir com 4 pull requests em projetos públicos de qualquer repositório.&lt;/p&gt;
+
+&lt;p&gt;No próprio site tem algumas sugestões de projetos nos quais você pode contribuir, vou listar alguns aqui:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/campuscode/rails-guides-pt-BR&quot;&gt;Projeto de tradução do Rails Guides&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/pydanny/cookiecutter-django&quot;&gt;Cookiecutter Django&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/matheusam/iot_alert_panel&quot;&gt;IOT Panel&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/validatorjs/validator.js/issues/1113&quot;&gt;Validator.js&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Os pull requests serão aceitos até o dia 31 de outubro. Então, vamos codar! Até mais, pessoal! 👨🏻‍💻&lt;/p&gt;
+
+</description>
+        <pubDate>Wed, 16 Oct 2019 19:00:00 -0300</pubDate>
+        <link>http://localhost:4000//hacktoberfest/2019/10/16/hacktoberfest.html</link>
+        <guid isPermaLink="true">http://localhost:4000//hacktoberfest/2019/10/16/hacktoberfest.html</guid>
+        
+        
+        <category>Hacktoberfest</category>
+        
+      </item>
     
       <item>
         <title>Controlando a trajetória de um robô diferencial: Follow the line!</title>
@@ -92,8 +119,8 @@
 &lt;span class=&quot;c1&quot;&gt;%   wd = velocidade angular da roda direita&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;%   we = velocidade angular da roda esquerda&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;%   ts = periodo de amostragem [s]&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;%   l = 0.2 [m] espaco entre as duas rodas&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;%   r = 0.05 [m] raio das rodas&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;%   l = espaco entre as duas rodas [m]&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;%   r = raio das rodas [m]&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.09&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.05&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
@@ -195,8 +222,8 @@
 &lt;span class=&quot;c1&quot;&gt;% P1 = posicao estimada &lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;% x,y,theta = trajetoria do robo&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;% i = amostras&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;% v = velocidade de referencia linear do centro de massa do robo&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;% w = velocidade de referencia angular do centro de massa do robo&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;% vref = velocidade de referencia linear do centro de massa do robo&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;% wref = velocidade de referencia angular do centro de massa do robo&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;% vrobo = velocidade linear do robo [m/s]&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;% wrobo = velocidade angular do robo [rad/s]&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;% Kd = Constante de Ganho&lt;/span&gt;
@@ -575,7 +602,7 @@ g++ lex.yy.c -lfl -o lexico
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Para iniciar a análise léxica, basta executar o comando seguinte comando no terminal:&lt;/p&gt;
+&lt;p&gt;Para iniciar a análise léxica, basta executar o seguinte comando no terminal:&lt;/p&gt;
 
 &lt;pre&gt;
 ./lexico main.c main.lex
@@ -620,7 +647,7 @@ g++ lex.yy.c -lfl -o lexico
 
 &lt;p&gt;No processo de compilação de um programa, essas informações são enviadas posteriormente para o analisador sintático, responsável por gerar uma estrutura de dados a partir do código-fonte e verificar se ela está de acordo com a gramática que foi definida para a linguagem. Mas isso já é assunto para um próximo post!&lt;/p&gt;
 
-&lt;p&gt;Caso queira se aprofundar ainda mais nessa área, recomendo o &lt;a href=&quot;http://www.stanford.edu/class/cs143&quot;&gt;curso de compiladores da Stanford&lt;/a&gt; (em inglês).&lt;/p&gt;
+&lt;p&gt;Caso queira se aprofundar ainda mais nessa área, recomendo o &lt;a href=&quot;https://lagunita.stanford.edu/courses/Engineering/Compilers/Fall2014/about&quot;&gt;curso de compiladores da Stanford&lt;/a&gt; (em inglês).&lt;/p&gt;
 
 &lt;p&gt;Obrigado a tod@s, e até mais! 😊&lt;/p&gt;
 
