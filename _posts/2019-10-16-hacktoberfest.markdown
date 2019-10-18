@@ -3,7 +3,6 @@ layout: post
 title:  "Hacktoberfest 2019"
 date:   2019-10-16 22:00:00
 categories: ['Hacktoberfest']
-cover: '/assets/images/hacktoberfest.jpg'
 ---
 
 Neste mês de outubro está acontecendo a Hacktoberfest, evento organizado pela [DigitalOcean][digitalocean] e pela [DEV][dev]. A proposta é bem simples: apoie o open-source e ganhe uma camiseta exclusiva!

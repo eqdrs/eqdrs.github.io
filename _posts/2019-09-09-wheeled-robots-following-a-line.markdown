@@ -44,39 +44,39 @@ Precisaremos de uma função que simule o veículo diferencial com o qual trabal
 {% highlight matlab linenos %}
 
 function [P1, vr, wr] = vehicle_diff(P0, v, w, ts)
-% funcao que simula um robo diferencial
-%   P0 = [x; y; theta] posicao atual do robo
-%   P1 = [x1; y1; theta1] posicao apos aplicar os sinais de controle
-%   v = velocidade de referencia linear [m/s]
-%   w = velocidade de referencia angular [rad/s]
-%   vr = velocidade do robo linear [m/s]
-%   wr = velocidade do robo angular [rad/s]
-%   wd = velocidade angular da roda direita
-%   we = velocidade angular da roda esquerda
-%   ts = periodo de amostragem [s]
-%   l = espaco entre as duas rodas [m]
-%   r = raio das rodas [m]
-l = 0.09;
-r = 0.05;
+  % funcao que simula um robo diferencial
+  %   P0 = [x; y; theta] posicao atual do robo
+  %   P1 = [x1; y1; theta1] posicao apos aplicar os sinais de controle
+  %   v = velocidade de referencia linear [m/s]
+  %   w = velocidade de referencia angular [rad/s]
+  %   vr = velocidade do robo linear [m/s]
+  %   wr = velocidade do robo angular [rad/s]
+  %   wd = velocidade angular da roda direita
+  %   we = velocidade angular da roda esquerda
+  %   ts = periodo de amostragem [s]
+  %   l = espaco entre as duas rodas [m]
+  %   r = raio das rodas [m]
+  l = 0.09;
+  r = 0.05;
 
-% Adicao de ruido na leitura das velocidades
-V = [v w]';  
-T = [r/2 (r + 0.002)/2; r/l -(r+0.002)/l];
-W = inv(T)*V;  % W = [wd we]'
-wd = W(1);
-we = W(2);
+  % Adicao de ruido na leitura das velocidades
+  V = [v w]';  
+  T = [r/2 (r + 0.002)/2; r/l -(r+0.002)/l];
+  W = inv(T)*V;  % W = [wd we]'
+  wd = W(1);
+  we = W(2);
 
-% Velocidades estimadas
-Vest = T*[wd we]';
-vr = Vest(1);
-wr = Vest(2);
+  % Velocidades estimadas
+  Vest = T*[wd we]';
+  vr = Vest(1);
+  wr = Vest(2);
 
-% Matriz de rotacao
-theta = P0(3);
-R = [cos(theta) 0; sin(theta) 0; 0 1];
+  % Matriz de rotacao
+  theta = P0(3);
+  R = [cos(theta) 0; sin(theta) 0; 0 1];
 
-% A posicao P1 eh a posicao atual mais a evolucao no espaco global
-P1 = P0 + R * (Vest * ts);
+  % A posicao P1 eh a posicao atual mais a evolucao no espaco global
+  P1 = P0 + R * (Vest * ts);
 end
 
 
@@ -85,7 +85,7 @@ end
 ##### Implementando os controladores
 <p />
 
-Criaremos agora um arquivo chamado `navigation_controller.m`, no qual iremos implementar os nossos dois controladores de acordo com as equações apresentadas acima. Aqui, também iremos atualizar os estados do robô, e registrar o log de navegação.
+Criaremos agora um arquivo chamado `navigation_controller.m`, no qual iremos implementar os nossos dois controladores de acordo com as equações apresentadas acima. Aqui, também iremos atualizar os estados do robô.
 
 {% highlight matlab linenos %}
 % Template
