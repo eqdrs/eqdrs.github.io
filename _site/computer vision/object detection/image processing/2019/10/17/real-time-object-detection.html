@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh" crossorigin="anonymous"></script>
+<script src="/assets/typewrite/dist/typewrite.min.js"></script>
+<title>Detecção de objetos em tempo real com a API TensorFlow Object Detection</title>
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Detecção de objetos em tempo real com a API TensorFlow Object Detection | Everton Quadros.</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Detecção de objetos em tempo real com a API TensorFlow Object Detection" />
+<meta name="author" content="Software Developer." />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Olá, pessoal! Neste post, irei trazer uma pequena experiência usando a Tensorflow Object Detection API. Trata-se de uma aplicação em Python para detecção de objetos em tempo real, que utiliza esta API como backend. É necessário ter uma webcam no seu computador para executar o projeto." />
+<meta property="og:description" content="Olá, pessoal! Neste post, irei trazer uma pequena experiência usando a Tensorflow Object Detection API. Trata-se de uma aplicação em Python para detecção de objetos em tempo real, que utiliza esta API como backend. É necessário ter uma webcam no seu computador para executar o projeto." />
+<link rel="canonical" href="http://localhost:4000/computer%20vision/object%20detection/image%20processing/2019/10/17/real-time-object-detection.html" />
+<meta property="og:url" content="http://localhost:4000/computer%20vision/object%20detection/image%20processing/2019/10/17/real-time-object-detection.html" />
+<meta property="og:site_name" content="Everton Quadros." />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-10-17T20:00:00-03:00" />
+<script type="application/ld+json">
+{"dateModified":"2019-10-17T20:00:00-03:00","datePublished":"2019-10-17T20:00:00-03:00","description":"Olá, pessoal! Neste post, irei trazer uma pequena experiência usando a Tensorflow Object Detection API. Trata-se de uma aplicação em Python para detecção de objetos em tempo real, que utiliza esta API como backend. É necessário ter uma webcam no seu computador para executar o projeto.","author":{"@type":"Person","name":"Software Developer."},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/computer%20vision/object%20detection/image%20processing/2019/10/17/real-time-object-detection.html"},"@type":"BlogPosting","url":"http://localhost:4000/computer%20vision/object%20detection/image%20processing/2019/10/17/real-time-object-detection.html","headline":"Detecção de objetos em tempo real com a API TensorFlow Object Detection","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<script>
+        $(document).ready(function(){
+            $('#typewriteText').typewrite({
+                actions: [
+                    {type: 'Everton Quadros.'}
+                ]
+            });
+        });
+    </script>
+      
+  </head>
+  <body>
+    <main class="container">
+      <section class="about">
+        <a href="/"><img src="/assets/portfolio.jpeg" alt="Everton Quadros"></a>
+        <h2 id="title">
+          <a href="/" id="typewriteText"></a>
+        </h2>
+        <p class="tagline">Software Developer</p>
+        <ul class="social"><a href="https://github.com/eqdrs">
+              <li>
+                <i class="icon-github-circled"></i>
+              </li>
+            </a><a href="https://www.linkedin.com/in/everton-quadros/">
+              <li>
+                <i class="icon-linkedin-squared"></i>
+              </li>
+            </a><a href="https://twitter.com/ton_quadros">
+              <li>
+                <i class="icon-twitter-squared"></i>
+              </li>
+            </a></ul><p>&copy;
+          2020</p>
+      </section>
+      <section class="content">
+        <div class="post-container">
+  <a class="post-link" href="/computer%20vision/object%20detection/image%20processing/2019/10/17/real-time-object-detection.html">
+    <h2 class="post-title">Detecção de objetos em tempo real com a API TensorFlow Object Detection</h2>
+  </a>
+  <div class="post-meta">
+    <ul class="post-categories"><li>Computer Vision</li><li>Object Detection</li><li>Image Processing</li></ul>
+    <div class="post-date"><i class="icon-calendar"></i>Oct 17, 2019</div>
+  </div>
+  <div class="post">
+    <p>Olá, pessoal! Neste post, irei trazer uma pequena experiência usando a Tensorflow Object Detection API. Trata-se de uma aplicação em Python para detecção de objetos em tempo real, que utiliza esta API como backend. É necessário ter uma webcam no seu computador para executar o projeto.</p>
+
+<p>A <a href="https://tensorflow-object-detection-api-tutorial.readthedocs.io/en/latest/">TensorFlow Object Detection API</a> é uma estrutura de código aberto construída sobre o TensorFlow, que facilita a construção, treinamento e implantação de modelos de detecção de objetos.</p>
+
+<p>Para esta aplicação, será utilizado um modelo pré-treinado oferecido pela API, o <strong>SSD MobileNet v1 (COCO)</strong>, que possui velocidade rápida (30 ms) e um índice de precisão de 21%.</p>
+
+<h3 id="ssd--single-shot-multibox-detector">SSD – Single Shot MultiBox Detector</h3>
+<p></p>
+
+<p>O Single Shot MultiBox Detector é um método para detecção objetos em imagens que usa uma única rede neural profunda. Ele difere de outros detectores de single shot devido ao uso de múltiplas camadas que proporcionam uma precisão mais fina em objetos com diferentes escalas (cada camada mais profunda verá objetos maiores). Aqui você encontra o paper original: <a href="https://arxiv.org/pdf/1512.02325.pdf">https://arxiv.org/pdf/1512.02325.pdf</a>.</p>
+
+<p>O SSD normalmente começa com um modelo pré-treinado que é convertido em uma rede neural totalmente convolutiva. Em seguida, são anexadas algumas camadas de convolução extras, que ajudarão a detectar objetos maiores na imagem.</p>
+
+<p>O termo “Multibox” se refere à etapa anterior ao Single Shot Detector, dentro da arquitetura do SSD. Ele divide a imagem em diversos segmentos, e desenha caixas delimitadoras em torno de cada um desses segmentos. Feito isso, o algoritmo verifica onde existe um objeto a ser detectado dentro dessas caixas (durante o processo de construção do modelo, nós informamos quais são as possíveis classes a serem detectadas).</p>
+
+<p><img style="zoom: 0.6" class="center" src="/assets/images/multibox.png" /></p>
+
+<h3 id="entendendo-o-código-da-aplicação">Entendendo o código da aplicação</h3>
+<p></p>
+
+<p>A aplicação irá iniciar a webcam e então iniciar a captura das imagens em vídeo. Cada frame do vídeo é processado como uma imagem, que recebe algumas tarefas de pré-processamento. Uma vez que a imagem tenha sido processada, ela é entregue ao modelo de aprendizagem de máquina fornecido pela API do TensorFlow, que então classifica a imagem e mostra o score, que é o percentual de certeza sobre a classificação.</p>
+
+<p>Você pode baixar/clonar o código da aplicação <a href="https://github.com/eqdrs/object-detection-app">clicando aqui</a>. Abaixo, a implementação do <code class="highlighter-rouge">object_detection_app.py</code> com alguns comentários.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># object_detection_app.py
+</span>
+<span class="c1"># Imports
+</span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+<span class="n">slim</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">contrib</span><span class="o">.</span><span class="n">slim</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.image</span> <span class="k">as</span> <span class="n">mpimg</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">'../'</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">nets</span> <span class="kn">import</span> <span class="n">ssd_vgg_300</span><span class="p">,</span> <span class="n">ssd_common</span><span class="p">,</span> <span class="n">np_methods</span>
+<span class="kn">from</span> <span class="nn">preprocessing</span> <span class="kn">import</span> <span class="n">ssd_vgg_preprocessing</span>
+<span class="kn">from</span> <span class="nn">app</span> <span class="kn">import</span> <span class="n">visualization</span>
+
+<span class="c1"># Sessão TensorFlow: aumenta a memória quando necessário. 
+</span><span class="n">gpu_options</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">GPUOptions</span><span class="p">(</span><span class="n">allow_growth</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">ConfigProto</span><span class="p">(</span><span class="n">log_device_placement</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">gpu_options</span><span class="o">=</span><span class="n">gpu_options</span><span class="p">)</span>
+<span class="n">isess</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">InteractiveSession</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+
+<span class="c1"># Placeholders de Input
+</span><span class="n">net_shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+<span class="n">data_format</span> <span class="o">=</span> <span class="s">'NHWC'</span>
+<span class="n">img_input</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">uint8</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># Pré-processamento: resize para. shape do SSD
+</span><span class="n">image_pre</span><span class="p">,</span> <span class="n">labels_pre</span><span class="p">,</span> <span class="n">bboxes_pre</span><span class="p">,</span> <span class="n">bbox_img</span> <span class="o">=</span> <span class="n">ssd_vgg_preprocessing</span><span class="o">.</span><span class="n">preprocess_for_eval</span><span class="p">(</span>
+    <span class="n">img_input</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="n">net_shape</span><span class="p">,</span> <span class="n">data_format</span><span class="p">,</span> <span class="n">resize</span><span class="o">=</span><span class="n">ssd_vgg_preprocessing</span><span class="o">.</span><span class="n">Resize</span><span class="o">.</span><span class="n">WARP_RESIZE</span><span class="p">)</span>
+<span class="n">image_4d</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">image_pre</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Define o modelo SSD
+</span><span class="n">reuse</span> <span class="o">=</span> <span class="bp">True</span> <span class="k">if</span> <span class="s">'ssd_net'</span> <span class="ow">in</span> <span class="nb">locals</span><span class="p">()</span> <span class="k">else</span> <span class="bp">None</span>
+<span class="n">ssd_net</span> <span class="o">=</span> <span class="n">ssd_vgg_300</span><span class="o">.</span><span class="n">SSDNet</span><span class="p">()</span>
+<span class="k">with</span> <span class="n">slim</span><span class="o">.</span><span class="n">arg_scope</span><span class="p">(</span><span class="n">ssd_net</span><span class="o">.</span><span class="n">arg_scope</span><span class="p">(</span><span class="n">data_format</span><span class="o">=</span><span class="n">data_format</span><span class="p">)):</span>
+    <span class="n">predictions</span><span class="p">,</span> <span class="n">localisations</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ssd_net</span><span class="o">.</span><span class="n">net</span><span class="p">(</span><span class="n">image_4d</span><span class="p">,</span> <span class="n">is_training</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">reuse</span><span class="o">=</span><span class="n">reuse</span><span class="p">)</span>
+
+<span class="c1"># Restaura o modelo SSD
+</span><span class="n">ckpt_filename</span> <span class="o">=</span> <span class="s">'checkpoints/ssd_300_vgg.ckpt'</span>
+<span class="n">isess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">())</span>
+<span class="n">saver</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">Saver</span><span class="p">()</span>
+<span class="n">saver</span><span class="o">.</span><span class="n">restore</span><span class="p">(</span><span class="n">isess</span><span class="p">,</span> <span class="n">ckpt_filename</span><span class="p">)</span>
+
+<span class="c1"># SSD default anchor boxes
+</span><span class="n">ssd_anchors</span> <span class="o">=</span> <span class="n">ssd_net</span><span class="o">.</span><span class="n">anchors</span><span class="p">(</span><span class="n">net_shape</span><span class="p">)</span>
+
+<span class="c1"># Rotina de processamento das imagens
+</span><span class="k">def</span> <span class="nf">process_image</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">select_threshold</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">nms_threshold</span><span class="o">=</span><span class="mf">.45</span><span class="p">,</span> <span class="n">net_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">)):</span>
+
+    <span class="c1"># Executa a rede SSD.
+</span>    <span class="n">rimg</span><span class="p">,</span> <span class="n">rpredictions</span><span class="p">,</span> <span class="n">rlocalisations</span><span class="p">,</span> <span class="n">rbbox_img</span> <span class="o">=</span> <span class="n">isess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">image_4d</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">localisations</span><span class="p">,</span> <span class="n">bbox_img</span><span class="p">],</span>
+                                                              <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">img_input</span><span class="p">:</span> <span class="n">img</span><span class="p">})</span>
+    
+    <span class="c1"># Obtém classes e bboxes (bounding boxes) das saídas da rede
+</span>    <span class="n">rclasses</span><span class="p">,</span> <span class="n">rscores</span><span class="p">,</span> <span class="n">rbboxes</span> <span class="o">=</span> <span class="n">np_methods</span><span class="o">.</span><span class="n">ssd_bboxes_select</span><span class="p">(</span>
+            <span class="n">rpredictions</span><span class="p">,</span> <span class="n">rlocalisations</span><span class="p">,</span> <span class="n">ssd_anchors</span><span class="p">,</span>
+            <span class="n">select_threshold</span><span class="o">=</span><span class="n">select_threshold</span><span class="p">,</span> <span class="n">img_shape</span><span class="o">=</span><span class="n">net_shape</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">decode</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    
+    <span class="n">rbboxes</span> <span class="o">=</span> <span class="n">np_methods</span><span class="o">.</span><span class="n">bboxes_clip</span><span class="p">(</span><span class="n">rbbox_img</span><span class="p">,</span> <span class="n">rbboxes</span><span class="p">)</span>
+    <span class="n">rclasses</span><span class="p">,</span> <span class="n">rscores</span><span class="p">,</span> <span class="n">rbboxes</span> <span class="o">=</span> <span class="n">np_methods</span><span class="o">.</span><span class="n">bboxes_sort</span><span class="p">(</span><span class="n">rclasses</span><span class="p">,</span> <span class="n">rscores</span><span class="p">,</span> <span class="n">rbboxes</span><span class="p">,</span> <span class="n">top_k</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+    <span class="n">rclasses</span><span class="p">,</span> <span class="n">rscores</span><span class="p">,</span> <span class="n">rbboxes</span> <span class="o">=</span> <span class="n">np_methods</span><span class="o">.</span><span class="n">bboxes_nms</span><span class="p">(</span><span class="n">rclasses</span><span class="p">,</span> <span class="n">rscores</span><span class="p">,</span> <span class="n">rbboxes</span><span class="p">,</span> <span class="n">nms_threshold</span><span class="o">=</span><span class="n">nms_threshold</span><span class="p">)</span>
+    
+    <span class="c1"># Redimensiona bboxes para a forma original da imagem. 
+</span>    <span class="n">rbboxes</span> <span class="o">=</span> <span class="n">np_methods</span><span class="o">.</span><span class="n">bboxes_resize</span><span class="p">(</span><span class="n">rbbox_img</span><span class="p">,</span> <span class="n">rbboxes</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">rclasses</span><span class="p">,</span> <span class="n">rscores</span><span class="p">,</span> <span class="n">rbboxes</span>
+
+
+<span class="c1"># Testa nas imagens de teste
+</span><span class="n">path</span> <span class="o">=</span> <span class="s">'demo/'</span>
+<span class="n">image_names</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+
+<span class="c1"># Altera o valor de 1 a 7 para testar diferentes imagens
+</span><span class="n">img</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="n">image_names</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">rclasses</span><span class="p">,</span> <span class="n">rscores</span><span class="p">,</span> <span class="n">rbboxes</span> <span class="o">=</span>  <span class="n">process_image</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+
+<span class="c1"># Visualiza a imagem com os objetos detectados
+</span><span class="n">visualization</span><span class="o">.</span><span class="n">plt_bboxes</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">rclasses</span><span class="p">,</span> <span class="n">rscores</span><span class="p">,</span> <span class="n">rbboxes</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="executando-a-aplicação">Executando a aplicação</h3>
+<p></p>
+
+<p>Os requisitos e instruções de uso estão disponíveis no arquivo <code class="highlighter-rouge">README.md</code> do projeto. Basicamente, será necessário ter o Anaconda instalado, com uma versão do Python igual ou superior a <code class="highlighter-rouge">3.6.5</code>, além do OpenCV e TensorFlow.</p>
+
+<p>Abaixo, um vídeo demonstrando um pouco da aplicação em funcionamento:</p>
+
+<div class="video-container">
+  <iframe src="https://www.youtube.com/embed/u9znvuGpVfk" frameborder="0" class="video" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</div>
+
+<p>Pretendo trazer mais conteúdos relacionados a Visão Computacional, dessa vez mostrando como criar nossos próprios modelos. Essa é uma das áreas de IA que mais me chamam atenção.</p>
+
+<p>Espero que tenham gostado! Até mais, pessoal! 😃</p>
+
+
+  </div></div>
+
+      </section>
+    </main></body>
+</html>

@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Bibliotecas Python para Análise de Dados Parte 1: NumPy e Pandas"
+title:  "Bibliotecas Python para Análise de Dados: NumPy e Pandas"
 date:   2019-09-01 23:00:00
-categories: ['Data Science']
+categories: ['Data Science', 'Pyhton']
 cover: '/assets/images/python.jpg'
 ---
 

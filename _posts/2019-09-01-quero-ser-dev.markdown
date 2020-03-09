@@ -12,13 +12,13 @@ O [Quero Ser Dev][queroserdev] tem como objetivo selecionar pessoas que amem pro
 
 O processo é dividido em duas etapas. Na primeira etapa (seleção), é realizada a triagem de currículos, teste online de lógica, desafios online (essa parte é muuito daora!) e dinâmica em grupo/entrevista. Logo nessa etapa, já é possível obter grandes aprendizados e colocar a mão na massa.
 
-<img src="/assets/images/profile3.jpg" alt="Campus Code" title="Codando! =D" class="center"/>
+<img width="60%" class="center" alt="Codando! =D" src="/assets/images/profile3.jpg">
 
 Os aprovados para a segunda etapa ganham um treinamento na Campus Code, focado em Ruby, Rails, Arquitetura MVC, Git, Testes, HTML 5, CSS 3, Javascript e Desenvolvimento Ágil com duração de 9 semanas, sendo 3 online e 6 presenciais. A Campus Code tem um ambiente muito legal, que proporciona a vivência do cotidiano de um time de desenvolvimento. Cada minuto vivido lá foi de muito aprendizado. Além de tudo isso, é possível intragir com feras que já desenvolvem na empresa.
 
 Ao final do curso, é apresentado um projetão bem maneiro lá na Locaweb, desenvolvido pelos próprios devinhos!! Definitivamente, uma experiência única, e uma das melhores da minha vida! A Locaweb é um lugar especial para se trabalhar, e que concilia descontração e alto nível técnico.
 
-<img src="/assets/images/campuscode2.jpg" alt="Campus Code" title="Dia da apresentação do projeto final, na Locaweb." class="center"/>
+<img width="60%" class="center" alt="Turma QSD 2018-2019" src="/assets/images/campuscode2.jpg">
 
 Então, se você é apaixonado por desenvolver em diferentes linguagens, inovar, gosta de dinamismo e trabalho em equipe, não perca tempo! As inscrições podem ser feitas através do link: [http://queroserdevlocaweb.com.br/][queroserdev]
 

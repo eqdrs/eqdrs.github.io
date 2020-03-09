@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Bibliotecas Python para Análise de Dados Parte 3: SciPy"
+title:  "Bibliotecas Python para Análise de Dados: SciPy"
 date:   2019-09-06 01:00:00
-categories: ['Data Science']
+categories: ['Data Science', 'Pyhton']
 cover: '/assets/images/python.jpg'
 ---
 
