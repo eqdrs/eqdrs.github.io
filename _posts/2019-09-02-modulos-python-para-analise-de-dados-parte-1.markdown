@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Bibliotecas Python para Análise de Dados Parte 1: NumPy e Pandas"
+title:  "Bibliotecas Python para Análise de Dados: NumPy e Pandas"
 date:   2019-09-01 23:00:00
-categories: ['Data Science']
+categories: ['Data Science', 'Pyhton']
 cover: '/assets/images/python.jpg'
 ---
 
@@ -127,4 +127,4 @@ No [próximo post][parte2], irei falar um pouco sobre os demais pacotes do PyDat
 [bokeh]: https://bokeh.pydata.org/en/latest/index.html
 [statsmodels]: https://www.statsmodels.org/
 [seaborn]: https://seaborn.pydata.org/
-[parte2]: https://eqdrs.github.io/data%20science/2019/09/03/modulos-python-para-analise-de-dados-parte-2.html
+[parte2]: https://eqdrs.github.io/data%20science/pyhton/2019/09/03/modulos-python-para-analise-de-dados-parte-2.html

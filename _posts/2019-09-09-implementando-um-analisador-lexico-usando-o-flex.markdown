@@ -9,19 +9,19 @@ A análise léxica é a primeira fase do processo de compilação de um programa
 
 O [Flex][flex] (Fast Lexical Analyzer Generator) é uma ferramenta gratuita e open-source para geração de analisadores léxicos. Ela foi escrita em C, por volta de 1987, pelo Professor [Vern Paxson][vern].
 
-##### Instalando o Flex
+### Instalando o Flex
 <p />
 
 Para instalar o Flex no Ubuntu, basta abrir o seu terminal (Ctrl + Alt + T) e executar os comandos abaixo:
 
-<pre>
+```
 sudo apt-get update
 sudo apt-get install flex
-</pre>
+```
 
 Pronto! Já podemos utilizar os recursos do Flex!
 
-##### Definindo uma convenção léxica para a linguagem
+### Definindo uma convenção léxica para a linguagem
 <p />
 
 Nossa linguagem será simples e procedimental, um subconjunto inspirado na linguagem C, que inclui somente variáveis inteiras, array de inteiros, funções, condição, e repetição. A linguagem seguirá as convenções definidas a seguir.
@@ -65,7 +65,7 @@ Elas **não** poderão ser usadas como nomes de variáveis/funções, e devem se
 
 - Comentários serão escritos da mesma forma que na linguagem C, usando a notação /* ...  */. Poderão ser inseridos em qualquer parte do código onde é permitido colocar espaços em branco, isto é, comentários **não** poderão ser inseridos dentro de tokens, e podem incluir mais de uma linha.
 
-##### Desenvolvendo o arquivo Flex
+### Desenvolvendo o arquivo Flex
 <p />
 
 O código flex é dividido em três seções:
@@ -80,7 +80,7 @@ O código flex é dividido em três seções:
 
 Para a linguagem que definimos, criaremos um arquivo chamado `lexico.l` com o código abaixo. Notem que ele é dividido em três seções, onde, na seção intermediária, definimos a ação a ser tomada para cada *pattern*. 
 
-```l
+```
 digit[0-9]
 letter[a-zA-Z]
 ID[a-zA-Z][a-zA-Z0-9]*
@@ -146,31 +146,31 @@ int yywrap(){
 }
 ```
 
-##### Gerando o arquivo lex.yy.c
+### Gerando o arquivo lex.yy.c
 <p />
 
 Após criarmos o arquivo `lexico.l` com as regras para o nosso analisador léxico, vamos gerar um arquivo chamado `lex.yy.c`, usando o Flex. Para isso, basta executar o comando abaixo no terminal:
 
-<pre>
+```
 flex lexico.l
-</pre>
+```
 
 Isso irá criar o `lex.yy.c` no mesmo diretório. Esse arquivo contém uma função chamada `yylex()`, que retorna 1 sempre que uma expressão especificada for encontrada no arquivo de entrada, e 0 quando o final do arquivo for atingido. Cada chamada à função `yylex()` analisa um token; quando a função é chamada novamente, ela começa de onde parou.
 
-##### Gerando o executável
+### Gerando o executável
 
 Para gerar o executável, vamos compilar o arquivo gerado pelo Flex através do comando:
 
-<pre>
+```
 g++ lex.yy.c -lfl -o lexico
-</pre>
+```
 
-##### Testando nosso analisador léxico
+### Testando nosso analisador léxico
 <p />
 
 Agora vamos testar nosso analisador léxico! Para isto, iremos criar um arquivo de exemplo chamado `main.c`, que irá conter o nosso programa-fonte:
 
-{% highlight c linenos %}
+```c
 /* main.c */
 void main(void){
   int a;
@@ -182,17 +182,17 @@ void main(void){
     a = (4 + 5) * 3;
   }
 }
-{% endhighlight %}
+```
 
 Para iniciar a análise léxica, basta executar o seguinte comando no terminal:
 
-<pre>
+```
 ./lexico main.c main.lex
-</pre>
+```
 
 Com isso, será gerado um arquivo chamado `main.lex` no mesmo diretório, contendo o resultado da análise léxica do nosso código-fonte:
 
-{% highlight c %}
+```c
 (2,KEY,"void")
 (2,ID,"main")
 (2,SYM,"(")
@@ -225,7 +225,7 @@ Com isso, será gerado um arquivo chamado `main.lex` no mesmo diretório, conten
 (9,SYM,";")
 (10,SYM,"}")
 (11,SYM,"}")
-{% endhighlight %}
+```
 
 Podemos ver que o nosso analisador léxico identificou todos os tokens e suas respectivas classes, como era esperado! Além disso, todos os comentários, tabs e quebras de linha foram ignorados, como também já prevíamos. \o/
 

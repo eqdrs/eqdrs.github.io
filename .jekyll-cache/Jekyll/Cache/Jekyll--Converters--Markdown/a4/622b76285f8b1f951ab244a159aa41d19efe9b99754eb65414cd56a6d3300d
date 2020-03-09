@@ -1,0 +1,238 @@
+I"�8<p>A análise léxica é a primeira fase do processo de compilação de um programa, responsável por fazer a leitura do código fonte, caractere a caractere, especificando os tokens e lexemas da linguagem. Neste post, iremos implementar e testar um analisador léxico para uma linguagem inspirada em C. E faremos isso usando o Flex!</p>
+
+<p>O <a href="https://www.gnu.org/software/flex/">Flex</a> (Fast Lexical Analyzer Generator) é uma ferramenta gratuita e open-source para geração de analisadores léxicos. Ela foi escrita em C, por volta de 1987, pelo Professor <a href="https://en.wikipedia.org/wiki/Vern_Paxson">Vern Paxson</a>.</p>
+
+<h3 id="instalando-o-flex">Instalando o Flex</h3>
+<p />
+
+<p>Para instalar o Flex no Ubuntu, basta abrir o seu terminal (Ctrl + Alt + T) e executar os comandos abaixo:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt-get update
+sudo apt-get install flex
+</code></pre></div></div>
+
+<p>Pronto! Já podemos utilizar os recursos do Flex!</p>
+
+<h3 id="definindo-uma-convenção-léxica-para-a-linguagem">Definindo uma convenção léxica para a linguagem</h3>
+<p />
+
+<p>Nossa linguagem será simples e procedimental, um subconjunto inspirado na linguagem C, que inclui somente variáveis inteiras, array de inteiros, funções, condição, e repetição. A linguagem seguirá as convenções definidas a seguir.</p>
+
+<ul>
+  <li>Na implementação, iremos considerar as seguintes classes de tokens na linguagem:</li>
+</ul>
+
+<pre>
+  <b>ID</b>      Identificador
+  <b>NUM</b>     Literal decimal (inteiro)
+  <b>KEY</b>     Palavra-chave
+  <b>SYM</b>     Símbolos léxicos
+  <b>ERROR</b>   Lexema do primeiro erro encontrado
+</pre>
+
+<ul>
+  <li>As palavras revervadas (keywords) serão as seguintes:</li>
+</ul>
+
+<pre>
+  <b>else   if   int   return   void   while</b>
+</pre>
+
+<p>Elas <strong>não</strong> poderão ser usadas como nomes de variáveis/funções, e devem ser escritas em minúsculo.</p>
+
+<ul>
+  <li>Os símbolos especiais serão:</li>
+</ul>
+
+<pre>
+  <b>!  &amp;&amp;  ||   +  -  *  /  &lt;  &lt;=  &gt;  &gt;=  ==  !=  =  ;  ,  (  )  [  ]  {  }  /*  */</b>
+</pre>
+
+<ul>
+  <li>Os outros lexemas são o ID e NUM, definidos pelas expressões regulares abaixo:</li>
+</ul>
+
+<pre>
+  <b>ID</b> = letter (letter | digit)*
+  <b>NUM</b> = digit digit*
+  <b>letter</b> = a | .. | z | A | .. | Z
+  <b>digit</b> = 0 | .. | 9
+</pre>
+
+<ul>
+  <li>
+    <p>Haverá distinção entre letras em maiúsculo e minúsculo.</p>
+  </li>
+  <li>
+    <p>Os espaços em branco consistem em caracter branco (‘ ‘), quebra-de-linha (‘\n’), e tabs (‘\t’). Eles deverão ser ignorados, exceto quando for necessário separar os ID’s e NUM’s, e palavras reservadas.</p>
+  </li>
+  <li>
+    <p>Comentários serão escritos da mesma forma que na linguagem C, usando a notação /* …  */. Poderão ser inseridos em qualquer parte do código onde é permitido colocar espaços em branco, isto é, comentários <strong>não</strong> poderão ser inseridos dentro de tokens, e podem incluir mais de uma linha.</p>
+  </li>
+</ul>
+
+<h3 id="desenvolvendo-o-arquivo-flex">Desenvolvendo o arquivo Flex</h3>
+<p />
+
+<p>O código flex é dividido em três seções:</p>
+
+<pre>
+  <b>definições</b>
+  %%
+  <b>regras</b>
+  %%
+  <b>código do usuário</b>
+</pre>
+
+<p>Para a linguagem que definimos, criaremos um arquivo chamado <code class="highlighter-rouge">lexico.l</code> com o código abaixo. Notem que ele é dividido em três seções, onde, na seção intermediária, definimos a ação a ser tomada para cada <em>pattern</em>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>digit[0-9]
+letter[a-zA-Z]
+ID[a-zA-Z][a-zA-Z0-9]*
+WHITESPACE[ ]
+quebra[\n]
+TAB[\t]
+
+%{
+    #define YY_DECL extern "C" int yylex()
+    #include&lt;string&gt;
+    #include&lt;iostream&gt;
+    using namespace std;
+    FILE *out ;
+	int linha;
+%}
+%option yylineno
+%x COMMENT
+
+%%
+
+{quebra}
+
+"/*" { linha=yylineno; BEGIN(COMMENT); }
+
+&lt;COMMENT&gt;"*/" { BEGIN(INITIAL); }
+
+&lt;COMMENT&gt;(.|\n);
+
+&lt;COMMENT&gt;&lt;&lt;EOF&gt;&gt; {fprintf(out,"(%d,ERROR,\"/*\")\n",linha); return 0;}
+
+else|if|int|return|void|while {fprintf(out,"(%d,KEY,\"%s\")\n",yylineno ,yytext);} 
+
+"+"|"-"|"*"|"/"|"&lt;"|"&lt;="|"&gt;"|"&gt;="|"=="|"!="|"="|";"|","|"("|")"|"["|"]"|"{"|"}" {fprintf(out,"(%d,SYM,\"%s\")\n",yylineno,yytext);}
+
+{WHITESPACE}+|{quebra}|{TAB}+
+ 
+{digit}+ {fprintf(out,"(%d,NUM,\"%s\")\n",yylineno,yytext);}
+
+{digit}+{ID}+ {fprintf(out,"(%d,ERROR,\"%s\")\n",yylineno,yytext); return 0;}
+
+{ID}+ {fprintf(out,"(%d,ID,\"%s\")\n",yylineno,yytext);}
+
+. {fprintf(out,"(%d,ERROR,\"%s\")\n",yylineno,yytext); return 0;}
+
+%%
+
+int yywrap();
+
+int main(int argc, char *argv[]){
+    FILE *arquivo = fopen(argv[1],"r");
+    if (!arquivo) {
+      cout &lt;&lt; "Arquivo inexistente" &lt;&lt; endl;
+      return -1;
+    }
+    yyin = arquivo;
+    out = fopen(argv[2],"w");
+    yylex();
+    return 0;
+}
+
+int yywrap(){
+    return 1;
+}
+</code></pre></div></div>
+
+<h3 id="gerando-o-arquivo-lexyyc">Gerando o arquivo lex.yy.c</h3>
+<p />
+
+<p>Após criarmos o arquivo <code class="highlighter-rouge">lexico.l</code> com as regras para o nosso analisador léxico, vamos gerar um arquivo chamado <code class="highlighter-rouge">lex.yy.c</code>, usando o Flex. Para isso, basta executar o comando abaixo no terminal:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>flex lexico.l
+</code></pre></div></div>
+
+<p>Isso irá criar o <code class="highlighter-rouge">lex.yy.c</code> no mesmo diretório. Esse arquivo contém uma função chamada <code class="highlighter-rouge">yylex()</code>, que retorna 1 sempre que uma expressão especificada for encontrada no arquivo de entrada, e 0 quando o final do arquivo for atingido. Cada chamada à função <code class="highlighter-rouge">yylex()</code> analisa um token; quando a função é chamada novamente, ela começa de onde parou.</p>
+
+<h3 id="gerando-o-executável">Gerando o executável</h3>
+
+<p>Para gerar o executável, vamos compilar o arquivo gerado pelo Flex através do comando:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>g++ lex.yy.c -lfl -o lexico
+</code></pre></div></div>
+
+<h3 id="testando-nosso-analisador-léxico">Testando nosso analisador léxico</h3>
+<p />
+
+<p>Agora vamos testar nosso analisador léxico! Para isto, iremos criar um arquivo de exemplo chamado <code class="highlighter-rouge">main.c</code>, que irá conter o nosso programa-fonte:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* main.c */</span>
+<span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
+  <span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+
+  <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>  <span class="cm">/* Testando
+              comentário
+              em bloco. */</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">9</span><span class="p">){</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="mi">3</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Para iniciar a análise léxica, basta executar o seguinte comando no terminal:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./lexico main.c main.lex
+</code></pre></div></div>
+
+<p>Com isso, será gerado um arquivo chamado <code class="highlighter-rouge">main.lex</code> no mesmo diretório, contendo o resultado da análise léxica do nosso código-fonte:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">KEY</span><span class="p">,</span><span class="s">"void"</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">ID</span><span class="p">,</span><span class="s">"main"</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">SYM</span><span class="p">,</span><span class="s">"("</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">KEY</span><span class="p">,</span><span class="s">"void"</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">SYM</span><span class="p">,</span><span class="s">")"</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">SYM</span><span class="p">,</span><span class="s">"{"</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">KEY</span><span class="p">,</span><span class="s">"int"</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">ID</span><span class="p">,</span><span class="s">"a"</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">SYM</span><span class="p">,</span><span class="s">";"</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="n">ID</span><span class="p">,</span><span class="s">"a"</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="n">SYM</span><span class="p">,</span><span class="s">"="</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="n">NUM</span><span class="p">,</span><span class="s">"10"</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="n">SYM</span><span class="p">,</span><span class="s">";"</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="n">KEY</span><span class="p">,</span><span class="s">"if"</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="n">SYM</span><span class="p">,</span><span class="s">"("</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="n">ID</span><span class="p">,</span><span class="s">"a"</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="n">SYM</span><span class="p">,</span><span class="s">"&gt;"</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="n">NUM</span><span class="p">,</span><span class="s">"9"</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="n">SYM</span><span class="p">,</span><span class="s">")"</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="n">SYM</span><span class="p">,</span><span class="s">"{"</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="n">ID</span><span class="p">,</span><span class="s">"a"</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="n">SYM</span><span class="p">,</span><span class="s">"="</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="n">SYM</span><span class="p">,</span><span class="s">"("</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="n">NUM</span><span class="p">,</span><span class="s">"4"</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="n">SYM</span><span class="p">,</span><span class="s">"+"</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="n">NUM</span><span class="p">,</span><span class="s">"5"</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="n">SYM</span><span class="p">,</span><span class="s">")"</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="n">SYM</span><span class="p">,</span><span class="s">"*"</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="n">NUM</span><span class="p">,</span><span class="s">"3"</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="n">SYM</span><span class="p">,</span><span class="s">";"</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="n">SYM</span><span class="p">,</span><span class="s">"}"</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="n">SYM</span><span class="p">,</span><span class="s">"}"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Podemos ver que o nosso analisador léxico identificou todos os tokens e suas respectivas classes, como era esperado! Além disso, todos os comentários, tabs e quebras de linha foram ignorados, como também já prevíamos. \o/</p>
+
+<p>No processo de compilação de um programa, essas informações são enviadas posteriormente para o analisador sintático, responsável por gerar uma estrutura de dados a partir do código-fonte e verificar se ela está de acordo com a gramática que foi definida para a linguagem. Mas isso já é assunto para um próximo post!</p>
+
+<p>Caso queira se aprofundar ainda mais nessa área, recomendo o <a href="https://lagunita.stanford.edu/courses/Engineering/Compilers/Fall2014/about">curso de compiladores da Stanford</a> (em inglês).</p>
+
+<p>Obrigado a tod@s, e até mais! 😊</p>
+
+:ET

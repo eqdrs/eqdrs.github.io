@@ -2,7 +2,7 @@
 layout: post
 title:  "Controlando a trajetória de um robô diferencial: Follow the line!"
 date:   2019-09-09 01:00:00
-categories: ['Robotics']
+categories: ['Robotics', 'Matlab']
 cover: '/assets/images/vehicle.png'
 ---
 
@@ -10,38 +10,38 @@ Olá, pessoal! Tudo bem? Hoje, iremos projetar e simular controladores para um v
 
 ![Octave][robo5]
 
-##### Uma breve introdução teórica
+### Uma breve introdução teórica
 
 Um robô diferencial possui 2 rodas tracionadas independentemente e um ou mais pontos de contato. A única forma de atuação em um robô diferencial é pela imposição de velocidades independentes em cada roda. Neste experimento, faremos um robô móvel diferencial seguir uma linha no plano definido por `ax + by + c = 0`. 
 
 Para isso, serão necessários dois controladores para ajustar a direção do veículo. Um dos controladores será responsável por "dirigir" o robô para minimizar a distância normal dele até a linha, de acordo com a equação:
 
-![eq1][eq1]
+<img style="zoom: 0.7" class="center"  src="/assets/images/eq1.jpeg">
 
 Onde *d* é a distância normal do robô até a linha. Temos, então, o nosso primeiro controlador:
 
-![eq3][eq3]
+<img style="zoom: 0.7" class="center"  src="/assets/images/eq3.jpeg">
 
 O segundo controlador ajusta o ângulo de orientação do veículo, para que ele fique paralelo à linha, de acordo com a equação:
 
-![eq2][eq2]
+<img style="zoom: 0.7" class="center"  src="/assets/images/eq2.jpeg">
 
 Temos, então, o nosso segundo controlador:
 
-![eq4][eq4]
+<img style="zoom: 0.7" class="center"  src="/assets/images/eq4.jpeg">
 
 Combinando as equações dos dois controladores, temos a nossa lei de controle do veículo:
 
-![eq5][eq5]
+<img style="zoom: 0.7" class="center"  src="/assets/images/eq5.jpeg">
 
 Agora, vamos ao código!
 
-##### Função de simulação do veículo diferencial
+### Função de simulação do veículo diferencial
 <p />
 
 Precisaremos de uma função que simule o veículo diferencial com o qual trabalharemos. No Octave, criaremos um arquivo chamado `vehicle_diff.m`, no qual iremos definir esta função, adicionando características do veículo, como o ruído nas rodas, amplitude, espaço entre as duas rodas, etc.
 
-{% highlight matlab linenos %}
+```matlab
 
 function [P1, vr, wr] = vehicle_diff(P0, v, w, ts)
   % funcao que simula um robo diferencial
@@ -80,14 +80,14 @@ function [P1, vr, wr] = vehicle_diff(P0, v, w, ts)
 end
 
 
-{% endhighlight %}
+```
 
-##### Implementando os controladores
+### Implementando os controladores
 <p />
 
 Criaremos agora um arquivo chamado `navigation_controller.m`, no qual iremos implementar os nossos dois controladores de acordo com as equações apresentadas acima. Aqui, também iremos atualizar os estados do robô.
 
-{% highlight matlab linenos %}
+```matlab
 % Template
 % P0 = posicao inical do robo
 % P1 = posicao estimada 
@@ -156,14 +156,14 @@ end
 
 plot_navigation;
 
-{% endhighlight %}
+```
 
-##### Plotando a trajetória do veículo
+### Plotando a trajetória do veículo
 <p />
 
 Agora criaremos o arquivo `plot_navigation.m`, para visualizarmos a trajetória do nosso robô, assim como suas velocidades linear e angular e sua angulação.
 
-{% highlight matlab linenos %}
+```matlab
 plotsize = 10;
 xmin = -plotsize;
 ymin = -plotsize;
@@ -204,16 +204,16 @@ figure
 plot(wrobo,'b-o');
 xlabel('amostras');
 ylabel('w (rad/s)');
-{% endhighlight %}
+```
 
-##### Executando o código
+### Executando o código
 
 Podemos executar nosso código pelo terminal do Octave, simplesmente digitando o nome do arquivo que queremos executar, neste caso, o `navigation_controller`. Não é necessário digitar o nome do arquivo com a extensão `.m`. Vamos aos resultados!
 
-![robo3][robo3]
-![robo4][robo4]
-![robo1][robo1]
-![robo2][robo2]
+<img width="500"  src="/assets/images/robo3.jpg">
+<img width="500"  src="/assets/images/robo4.jpg">
+<img width="500"  src="/assets/images/robo1.jpg">
+<img width="500"  src="/assets/images/robo2.jpg">
 
 Como podemos ver, à medida que o robô se aproxima da linha, sua velocidade angular vai se tornando mais estável e tendendo a zero. Após aproximadamente 20 amostras, o robô consegue se guiar sobre a linha que foi definida!
 

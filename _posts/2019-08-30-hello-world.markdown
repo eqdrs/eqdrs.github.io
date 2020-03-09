@@ -7,13 +7,13 @@ categories: ['Hello Word']
 
 Como de costume, um primeiro post para dar as boas-vindas!
 
-{% highlight ruby %}
+```ruby
 def welcome(name)
   puts "Welcome to my blog, #{name}"
 end
 welcome('Tom')
 #=> prints 'Welcome to my blog, Tom' to STDOUT.
-{% endhighlight %}
+```
 
 Aqui, pretendo registrar e compartilhar minhas experiências sobre desenvolvimento, tecnologia e até sobre minha vida. Acho que deve ajudar também a melhorar um pouco minhas habilidades pessoais.
 

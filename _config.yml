@@ -1,20 +1,54 @@
-name: Everton Quadros
-description: Software Developer
-meta_description: "Everton Quadros personal website."
+title: Everton Quadros.
+author: Everton Quadros
+email: evertonquadros15@gmail.com
+description: > # this means to ignore newlines until "show_exerpts:"
+  Software Developer.
+show_excerpts: true # set to true to show excerpts on the homepage
 
-markdown: kramdown
-highlighter: rouge
-logo: '/assets/images/profile2.jpeg'
-paginate: 15
-baseurl: /
-url: 'https://eqdrs.github.io/'
-domain_name: 'https://eqdrs.github.io/'
-google_analytics: 'UA-146875310-1'
-gems: [jekyll-paginate]
-plugins: 
-  - jekyll-paginate
+# Minima date format
+# refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
+sass:
+  sass_dir: _sass
+plainwhite:
+  name: Everton Quadros
+  tagline: Software Developer
+  date_format: "%b %-d, %Y"
+  sitemap: true # set to true to generate sitemap.xml content
+
+  # generate social links in footer
+  social_links:
+    twitter: ton_quadros
+    github:  eqdrs
+    linkedIn: in/everton-quadros/
+    rss: rss
+    # dribbble: jekyll
+    # facebook: jekyll
+    # flickr:   jekyll
+    # instagram: jekyll
+    # linkedin: jekyll
+    # pinterest: jekyll
+    # youtube: jekyll
+    # youtube_channel: UC8CXR0-3I70i1tfPg1PAE1g
+    # youtube_channel_name: CloudCannon
+    # telegram: jekyll
+    # googleplus: +jekyll
+    # microdotblog: jekyll
+
+    # Mastodon instances
+    # mastodon:
+    # - username: jekyll
+    #   instance: example.com
+    # - username: jekyll2
+    #   instance: example.com
+
+# If you want to link only specific pages in your header, uncomment
+# this and add the path to the pages in order as they should show up
+#header_pages:
+# - about.md
+
+# Build settings
+theme: plainwhite
+
+plugins:
   - jekyll-seo-tag
-
-# Details for the RSS feed generator
-url:            'https://eqdrs.github.io'
-author:         'Everton Quadros'
+#  - jekyll-feed

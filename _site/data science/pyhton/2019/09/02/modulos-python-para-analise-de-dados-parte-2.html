@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh" crossorigin="anonymous"></script>
+<script src="/assets/typewrite/dist/typewrite.min.js"></script>
+<title>Bibliotecas Python para Análise de Dados: Matplotlib</title>
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Bibliotecas Python para Análise de Dados: Matplotlib | Everton Quadros.</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Bibliotecas Python para Análise de Dados: Matplotlib" />
+<meta name="author" content="Everton Quadros" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Olá, pessoal! Neste post, irei dar continuação à apresentação dos pacotes que integram o PyData Stack. Você pode conferir a primeira parte clicando aqui." />
+<meta property="og:description" content="Olá, pessoal! Neste post, irei dar continuação à apresentação dos pacotes que integram o PyData Stack. Você pode conferir a primeira parte clicando aqui." />
+<link rel="canonical" href="http://localhost:4000/data%20science/pyhton/2019/09/02/modulos-python-para-analise-de-dados-parte-2.html" />
+<meta property="og:url" content="http://localhost:4000/data%20science/pyhton/2019/09/02/modulos-python-para-analise-de-dados-parte-2.html" />
+<meta property="og:site_name" content="Everton Quadros." />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-09-02T21:00:00-03:00" />
+<script type="application/ld+json">
+{"dateModified":"2019-09-02T21:00:00-03:00","datePublished":"2019-09-02T21:00:00-03:00","description":"Olá, pessoal! Neste post, irei dar continuação à apresentação dos pacotes que integram o PyData Stack. Você pode conferir a primeira parte clicando aqui.","author":{"@type":"Person","name":"Everton Quadros"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/data%20science/pyhton/2019/09/02/modulos-python-para-analise-de-dados-parte-2.html"},"@type":"BlogPosting","url":"http://localhost:4000/data%20science/pyhton/2019/09/02/modulos-python-para-analise-de-dados-parte-2.html","headline":"Bibliotecas Python para Análise de Dados: Matplotlib","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<script>
+        $(document).ready(function(){
+            $('#typewriteText').typewrite({
+                actions: [
+                    {type: 'Everton Quadros.'}
+                ]
+            });
+        });
+    </script>
+      
+  </head>
+  <body>
+    <main class="container">
+      <section class="about">
+        <a href="/"><img src="/assets/portfolio.jpeg" alt="Everton Quadros"></a>
+        <h2 id="title">
+          <a href="/" id="typewriteText"></a>
+        </h2>
+        <p class="tagline">Software Developer</p>
+        <ul class="social"><a href="https://github.com/eqdrs">
+              <li>
+                <i class="icon-github-circled"></i>
+              </li>
+            </a><a href="https://www.linkedin.com/in/everton-quadros/">
+              <li>
+                <i class="icon-linkedin-squared"></i>
+              </li>
+            </a><a href="https://twitter.com/ton_quadros">
+              <li>
+                <i class="icon-twitter-squared"></i>
+              </li>
+            </a></ul><p>&copy;
+          2020</p>
+      </section>
+      <section class="content">
+        <div class="post-container">
+  <a class="post-link" href="/data%20science/pyhton/2019/09/02/modulos-python-para-analise-de-dados-parte-2.html">
+    <h2 class="post-title">Bibliotecas Python para Análise de Dados: Matplotlib</h2>
+  </a>
+  <div class="post-meta">
+    <ul class="post-categories"><li>Data Science</li><li>Pyhton</li></ul>
+    <div class="post-date"><i class="icon-calendar"></i>Sep 2, 2019</div>
+  </div>
+  <div class="post">
+    <p>Olá, pessoal! Neste post, irei dar continuação à apresentação dos pacotes que integram o <a href="https://pydata.org/">PyData Stack</a>. Você pode conferir a primeira parte <a href="https://eqdrs.github.io/data%20science/pyhton/2019/09/01/modulos-python-para-analise-de-dados-parte-1.html">clicando aqui</a>.</p>
+
+<p>Desta vez, irei apresentar mais um importante pacote do stack de ciência de dados do Python: o <a href="https://matplotlib.org/">Matplotlib</a>.</p>
+
+<p>O Matplotlib é um pacote voltado para visualização de dados e geração de gráficos. Junto com o <a href="https://numpy.org/">NumPy</a> e o <a href="https://pandas.pydata.org/">Pandas</a>, forma a base do que fazemos com análise de dados em Python. Ele possui diversas ferramentas que facilitam a criação de gráficos e exportação dos mesmos em vários formatos.</p>
+
+<p>Importante ressaltar que, com a visualização dos dados, nós pretendemos apresentar um resultado e, para isso, não precisamos de um gráfico super-poluído e de difícil leitura. <em>Menos é mais!</em></p>
+
+<p>Agora vejamos como ele funciona com alguns exemplos!</p>
+
+<h4 id="construindo-plots-com-o-matplotlib">Construindo plots com o Matplotlib</h4>
+<p />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="n">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="c1"># O método plot() define os eixos do gráfico
+</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="/assets/images/matplotlib/output_5_0.png" alt="Output" /></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Variável 1'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'Variável 2'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Teste Plot'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="/assets/images/matplotlib/output_8_0.png" alt="Output" /></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s">'Primeira Linha'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="/assets/images/matplotlib/output_10_0.png" alt="Output" /></p>
+
+<h4 id="construindo-gráficos-de-barras">Construindo gráficos de barras</h4>
+<p />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s">'Barras'</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">'r'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="/assets/images/matplotlib/output_13_0.png" alt="Output" /></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s">'Barras1'</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">'r'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s">'Barras2'</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">'y'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="/assets/images/matplotlib/output_15_0.png" alt="Output" /></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">idades</span> <span class="o">=</span> <span class="p">[</span><span class="mi">22</span><span class="p">,</span><span class="mi">65</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">55</span><span class="p">,</span><span class="mi">21</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">34</span><span class="p">,</span><span class="mi">42</span><span class="p">,</span><span class="mi">41</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">99</span><span class="p">,</span><span class="mi">101</span><span class="p">,</span><span class="mi">120</span><span class="p">,</span><span class="mi">122</span><span class="p">,</span><span class="mi">130</span><span class="p">,</span><span class="mi">111</span><span class="p">,</span><span class="mi">115</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span><span class="mi">54</span><span class="p">,</span><span class="mi">44</span><span class="p">,</span><span class="mi">64</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">48</span><span class="p">]</span>
+
+<span class="n">ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">idades</span><span class="p">))]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">ids</span><span class="p">,</span> <span class="n">idades</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="/assets/images/matplotlib/output_18_0.png" alt="Output" /></p>
+
+<h4 id="construindo-um-scatterplot">Construindo um scatterplot</h4>
+<p />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s">'Pontos'</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">'r'</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s">'o'</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="/assets/images/matplotlib/output_24_0.png" alt="Output" /></p>
+
+<h4 id="gráfico-de-pizza">Gráfico de pizza</h4>
+<p />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fatias</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">13</span><span class="p">]</span>
+<span class="n">atividades</span> <span class="o">=</span> <span class="p">[</span><span class="s">'dormir'</span><span class="p">,</span><span class="s">'comer'</span><span class="p">,</span><span class="s">'passear'</span><span class="p">,</span><span class="s">'trabalhar'</span><span class="p">]</span>
+<span class="n">colunas</span> <span class="o">=</span> <span class="p">[</span><span class="s">'c'</span><span class="p">,</span><span class="s">'m'</span><span class="p">,</span><span class="s">'r'</span><span class="p">,</span><span class="s">'k'</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">fatias</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">atividades</span><span class="p">,</span> <span class="n">colors</span> <span class="o">=</span> <span class="n">colunas</span><span class="p">,</span> <span class="n">startangle</span> <span class="o">=</span> <span class="mi">90</span><span class="p">,</span> <span class="n">shadow</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">explode</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="/assets/images/matplotlib/grafico-pizza.png" alt="Output" /></p>
+
+<h4 id="stack-plot">Stack plot</h4>
+<p />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dias</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">dormir</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">77</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
+<span class="n">comer</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">trabalhar</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">passear</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">13</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">stackplot</span><span class="p">(</span><span class="n">dias</span><span class="p">,</span> <span class="n">dormir</span><span class="p">,</span> <span class="n">comer</span><span class="p">,</span> <span class="n">trabalhar</span><span class="p">,</span> <span class="n">passear</span><span class="p">,</span> <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s">'m'</span><span class="p">,</span><span class="s">'c'</span><span class="p">,</span><span class="s">'r'</span><span class="p">,</span><span class="s">'k'</span><span class="p">,</span><span class="s">'b'</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="/assets/images/matplotlib/output_27_0.png" alt="Output" /></p>
+
+<p>Por hoje é só, pessoal! No próximo post, irei falar sobre o <strong>SciPy</strong>, pacote do Python voltado para computação científica! Até mais! 👨‍💻</p>
+
+
+  </div></div>
+
+      </section>
+    </main></body>
+</html>

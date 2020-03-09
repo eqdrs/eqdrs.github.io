@@ -1,0 +1,213 @@
+I"�S<p>Olá, pessoal! Tudo bem? Hoje, iremos projetar e simular controladores para um veículo diferencial, que serão responsáveis por fazê-lo seguir uma linha definida em um plano. Para isso, usaremos o <a href="https://www.gnu.org/software/octave/">Octave</a>, uma linguagem computacional desenvolvida para computação matemática e que possui compatibilidade com <a href="https://www.mathworks.com/products/matlab.html">MATLAB</a>. Você pode fazer o download do executável do Octave <a href="https://www.gnu.org/software/octave/download.html">clicando aqui</a>.</p>
+
+<p><img src="/assets/images/robo5.jpeg" alt="Octave" /></p>
+
+<h3 id="uma-breve-introdução-teórica">Uma breve introdução teórica</h3>
+
+<p>Um robô diferencial possui 2 rodas tracionadas independentemente e um ou mais pontos de contato. A única forma de atuação em um robô diferencial é pela imposição de velocidades independentes em cada roda. Neste experimento, faremos um robô móvel diferencial seguir uma linha no plano definido por <code class="highlighter-rouge">ax + by + c = 0</code>.</p>
+
+<p>Para isso, serão necessários dois controladores para ajustar a direção do veículo. Um dos controladores será responsável por “dirigir” o robô para minimizar a distância normal dele até a linha, de acordo com a equação:</p>
+
+<p><img style="zoom: 0.7" class="center" src="/assets/images/eq1.jpeg" /></p>
+
+<p>Onde <em>d</em> é a distância normal do robô até a linha. Temos, então, o nosso primeiro controlador:</p>
+
+<p><img style="zoom: 0.7" class="center" src="/assets/images/eq3.jpeg" /></p>
+
+<p>O segundo controlador ajusta o ângulo de orientação do veículo, para que ele fique paralelo à linha, de acordo com a equação:</p>
+
+<p><img style="zoom: 0.7" class="center" src="/assets/images/eq2.jpeg" /></p>
+
+<p>Temos, então, o nosso segundo controlador:</p>
+
+<p><img style="zoom: 0.7" class="center" src="/assets/images/eq4.jpeg" /></p>
+
+<p>Combinando as equações dos dois controladores, temos a nossa lei de controle do veículo:</p>
+
+<p><img style="zoom: 0.7" class="center" src="/assets/images/eq5.jpeg" /></p>
+
+<p>Agora, vamos ao código!</p>
+
+<h3 id="função-de-simulação-do-veículo-diferencial">Função de simulação do veículo diferencial</h3>
+<p />
+
+<p>Precisaremos de uma função que simule o veículo diferencial com o qual trabalharemos. No Octave, criaremos um arquivo chamado <code class="highlighter-rouge">vehicle_diff.m</code>, no qual iremos definir esta função, adicionando características do veículo, como o ruído nas rodas, amplitude, espaço entre as duas rodas, etc.</p>
+
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">function</span> <span class="p">[</span><span class="n">P1</span><span class="p">,</span> <span class="n">vr</span><span class="p">,</span> <span class="n">wr</span><span class="p">]</span> <span class="o">=</span> <span class="n">vehicle_diff</span><span class="p">(</span><span class="n">P0</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">ts</span><span class="p">)</span>
+  <span class="c1">% funcao que simula um robo diferencial</span>
+  <span class="c1">%   P0 = [x; y; theta] posicao atual do robo</span>
+  <span class="c1">%   P1 = [x1; y1; theta1] posicao apos aplicar os sinais de controle</span>
+  <span class="c1">%   v = velocidade de referencia linear [m/s]</span>
+  <span class="c1">%   w = velocidade de referencia angular [rad/s]</span>
+  <span class="c1">%   vr = velocidade do robo linear [m/s]</span>
+  <span class="c1">%   wr = velocidade do robo angular [rad/s]</span>
+  <span class="c1">%   wd = velocidade angular da roda direita</span>
+  <span class="c1">%   we = velocidade angular da roda esquerda</span>
+  <span class="c1">%   ts = periodo de amostragem [s]</span>
+  <span class="c1">%   l = espaco entre as duas rodas [m]</span>
+  <span class="c1">%   r = raio das rodas [m]</span>
+  <span class="n">l</span> <span class="o">=</span> <span class="mf">0.09</span><span class="p">;</span>
+  <span class="n">r</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">;</span>
+
+  <span class="c1">% Adicao de ruido na leitura das velocidades</span>
+  <span class="n">V</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="n">w</span><span class="p">]</span><span class="o">'</span><span class="p">;</span>  
+  <span class="n">T</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span><span class="p">/</span><span class="mi">2</span> <span class="p">(</span><span class="n">r</span> <span class="o">+</span> <span class="mf">0.002</span><span class="p">)/</span><span class="mi">2</span><span class="p">;</span> <span class="n">r</span><span class="p">/</span><span class="n">l</span> <span class="o">-</span><span class="p">(</span><span class="n">r</span><span class="o">+</span><span class="mf">0.002</span><span class="p">)/</span><span class="n">l</span><span class="p">];</span>
+  <span class="n">W</span> <span class="o">=</span> <span class="nb">inv</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="o">*</span><span class="n">V</span><span class="p">;</span>  <span class="c1">% W = [wd we]'</span>
+  <span class="n">wd</span> <span class="o">=</span> <span class="n">W</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="n">we</span> <span class="o">=</span> <span class="n">W</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+
+  <span class="c1">% Velocidades estimadas</span>
+  <span class="n">Vest</span> <span class="o">=</span> <span class="n">T</span><span class="o">*</span><span class="p">[</span><span class="n">wd</span> <span class="n">we</span><span class="p">]</span><span class="o">'</span><span class="p">;</span>
+  <span class="n">vr</span> <span class="o">=</span> <span class="n">Vest</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="n">wr</span> <span class="o">=</span> <span class="n">Vest</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+
+  <span class="c1">% Matriz de rotacao</span>
+  <span class="n">theta</span> <span class="o">=</span> <span class="n">P0</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+  <span class="n">R</span> <span class="o">=</span> <span class="p">[</span><span class="nb">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="mi">0</span><span class="p">;</span> <span class="nb">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="mi">0</span><span class="p">;</span> <span class="mi">0</span> <span class="mi">1</span><span class="p">];</span>
+
+  <span class="c1">% A posicao P1 eh a posicao atual mais a evolucao no espaco global</span>
+  <span class="n">P1</span> <span class="o">=</span> <span class="n">P0</span> <span class="o">+</span> <span class="n">R</span> <span class="o">*</span> <span class="p">(</span><span class="n">Vest</span> <span class="o">*</span> <span class="n">ts</span><span class="p">);</span>
+<span class="k">end</span>
+
+
+</code></pre></div></div>
+
+<h3 id="implementando-os-controladores">Implementando os controladores</h3>
+<p />
+
+<p>Criaremos agora um arquivo chamado <code class="highlighter-rouge">navigation_controller.m</code>, no qual iremos implementar os nossos dois controladores de acordo com as equações apresentadas acima. Aqui, também iremos atualizar os estados do robô.</p>
+
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% Template</span>
+<span class="c1">% P0 = posicao inical do robo</span>
+<span class="c1">% P1 = posicao estimada </span>
+<span class="c1">% x,y,theta = trajetoria do robo</span>
+<span class="c1">% i = amostras</span>
+<span class="c1">% vref = velocidade de referencia linear do centro de massa do robo</span>
+<span class="c1">% wref = velocidade de referencia angular do centro de massa do robo</span>
+<span class="c1">% vrobo = velocidade linear do robo [m/s]</span>
+<span class="c1">% wrobo = velocidade angular do robo [rad/s]</span>
+<span class="c1">% Kd = Constante de Ganho</span>
+<span class="c1">% Kh = Constante de H</span>
+<span class="c1">% compWheel = Comprimento Roda Veiculo</span>
+
+<span class="c1">% Define posicao inicial do robo</span>
+<span class="n">P0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">0</span> <span class="nb">pi</span><span class="p">/</span><span class="mi">2</span><span class="p">]</span><span class="o">'</span><span class="p">;</span>
+<span class="n">P1</span> <span class="o">=</span> <span class="n">P0</span><span class="p">;</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> 
+<span class="n">x</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">P0</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">y</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">P0</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">theta</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">P0</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+
+<span class="c1">% Velocidade de referencia </span>
+<span class="n">vref</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">;</span>
+
+<span class="c1">% Amostragem</span>
+<span class="n">ts</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">;</span>
+
+<span class="c1">% Parametros da linha</span>
+<span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="o">-</span><span class="mi">2</span> <span class="mi">4</span><span class="p">];</span>
+
+<span class="c1">% Constante de Ganho</span>
+<span class="n">Kd</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">;</span>
+
+<span class="c1">% Constante de H</span>
+<span class="n">Kh</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">;</span>
+
+<span class="c1">% Comprimento da roda Veiculo</span>
+<span class="n">compWheel</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">;</span>
+
+<span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">500</span><span class="p">)</span> <span class="c1">% navegando por 60 segundos</span>
+  <span class="n">d</span> <span class="o">=</span> <span class="p">(</span><span class="n">L</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="n">L</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">y</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="n">L</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span> <span class="p">/</span> <span class="nb">sqrt</span><span class="p">((</span><span class="n">L</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">L</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">^</span><span class="mi">2</span><span class="p">);</span>
+
+  <span class="n">diffAng</span> <span class="o">=</span> <span class="n">angdiff</span><span class="p">(</span><span class="nb">atan2</span><span class="p">(</span><span class="o">-</span><span class="n">L</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">L</span><span class="p">(</span><span class="mi">2</span><span class="p">)),</span> <span class="n">theta</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
+
+  <span class="n">gama</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">Kd</span> <span class="o">*</span> <span class="n">d</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">Kh</span> <span class="o">*</span> <span class="n">diffAng</span><span class="p">);</span>
+
+  <span class="c1">%Calculando velocidade angular de referencia</span>
+  <span class="n">wref</span> <span class="o">=</span> <span class="p">(</span><span class="n">vref</span> <span class="p">/</span> <span class="n">compWheel</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="nb">tan</span><span class="p">(</span><span class="n">gama</span><span class="p">));</span>
+
+  <span class="c1">% Funcao que simula o veiculo diferencial</span>
+  <span class="p">[</span><span class="n">P1</span><span class="p">,</span> <span class="n">vr</span><span class="p">,</span> <span class="n">wr</span><span class="p">]</span> <span class="o">=</span> <span class="n">vehicle_diff</span><span class="p">(</span><span class="n">P0</span><span class="p">,</span> <span class="n">vref</span><span class="p">,</span> <span class="n">wref</span><span class="p">,</span> <span class="n">ts</span><span class="p">);</span>
+  <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+
+  <span class="c1">% Atualiza estado</span>
+  <span class="n">P0</span> <span class="o">=</span> <span class="n">P1</span><span class="p">;</span>
+
+  <span class="c1">% Logs da trajetoria</span>
+  <span class="n">x</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">P1</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+  <span class="n">y</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">P1</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="n">theta</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">P1</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+  <span class="n">vrobo</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">vr</span><span class="p">;</span>
+  <span class="n">wrobo</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">wr</span><span class="p">;</span>
+  <span class="n">ghama</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">gama</span><span class="p">;</span>
+<span class="k">end</span>
+
+<span class="n">plot_navigation</span><span class="p">;</span>
+
+</code></pre></div></div>
+
+<h3 id="plotando-a-trajetória-do-veículo">Plotando a trajetória do veículo</h3>
+<p />
+
+<p>Agora criaremos o arquivo <code class="highlighter-rouge">plot_navigation.m</code>, para visualizarmos a trajetória do nosso robô, assim como suas velocidades linear e angular e sua angulação.</p>
+
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plotsize</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="n">xmin</span> <span class="o">=</span> <span class="o">-</span><span class="n">plotsize</span><span class="p">;</span>
+<span class="n">ymin</span> <span class="o">=</span> <span class="o">-</span><span class="n">plotsize</span><span class="p">;</span>
+<span class="n">xmax</span> <span class="o">=</span> <span class="n">plotsize</span><span class="p">;</span>
+<span class="n">ymax</span> <span class="o">=</span> <span class="n">plotsize</span><span class="p">;</span>
+
+<span class="c1">% Plota linha</span>
+<span class="nb">alpha</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">L</span><span class="p">(</span><span class="mi">1</span><span class="p">)/</span><span class="n">L</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
+<span class="nb">beta</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">L</span><span class="p">(</span><span class="mi">3</span><span class="p">)/</span><span class="n">L</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
+<span class="n">t</span> <span class="o">=</span> <span class="o">-</span><span class="mi">20</span><span class="p">:</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">15</span><span class="p">;</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">alpha</span><span class="o">*</span><span class="n">t</span><span class="o">+</span><span class="nb">beta</span><span class="p">;</span>
+
+<span class="c1">% Plotando trajetoria do robo</span>
+<span class="nb">figure</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s1">'bo'</span><span class="p">);</span>
+<span class="nb">hold</span> <span class="n">on</span><span class="p">;</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s1">'r-'</span><span class="p">);</span>
+<span class="nb">title</span><span class="p">(</span><span class="s1">'Trajetoria de robo diferencial'</span><span class="p">);</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s1">'x (m)'</span><span class="p">);</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s1">'y (m)'</span><span class="p">);</span>
+
+<span class="nb">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">f</span><span class="p">,</span><span class="s1">'r'</span><span class="p">);</span>
+
+<span class="c1">% Plotando angulo do robo em radianos</span>
+<span class="nb">figure</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span><span class="s1">'r-x'</span><span class="p">);</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s1">'amostras'</span><span class="p">);</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s1">'theta (rad)'</span><span class="p">);</span>
+
+<span class="c1">% Plotando velocidade linear robo em m/s</span>
+<span class="nb">figure</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">vrobo</span><span class="p">,</span><span class="s1">'b-o'</span><span class="p">);</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s1">'amostras'</span><span class="p">);</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s1">'v (m/s)'</span><span class="p">);</span>
+
+<span class="c1">% Plotando velocidade angular do robo em rad/s</span>
+<span class="nb">figure</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">wrobo</span><span class="p">,</span><span class="s1">'b-o'</span><span class="p">);</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s1">'amostras'</span><span class="p">);</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s1">'w (rad/s)'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="executando-o-código">Executando o código</h3>
+
+<p>Podemos executar nosso código pelo terminal do Octave, simplesmente digitando o nome do arquivo que queremos executar, neste caso, o <code class="highlighter-rouge">navigation_controller</code>. Não é necessário digitar o nome do arquivo com a extensão <code class="highlighter-rouge">.m</code>. Vamos aos resultados!</p>
+
+<p><img width="500" src="/assets/images/robo3.jpg" />
+<img width="500" src="/assets/images/robo4.jpg" />
+<img width="500" src="/assets/images/robo1.jpg" />
+<img width="500" src="/assets/images/robo2.jpg" /></p>
+
+<p>Como podemos ver, à medida que o robô se aproxima da linha, sua velocidade angular vai se tornando mais estável e tendendo a zero. Após aproximadamente 20 amostras, o robô consegue se guiar sobre a linha que foi definida!</p>
+
+<p>Se quiserem se aprofundar um pouco mais nesta experiência, podem consultar o livro do Peter Corke <em>“Robotics, Vision and Control – Fundamental Algorithms in Matlab”</em>. O método <em>Following a line</em> é apresentado a partir da página 72 do livro, na seção 4.2.2.</p>
+
+<p>Espero que tenham gostado! Até o próximo post! 💕</p>
+
+:ET
