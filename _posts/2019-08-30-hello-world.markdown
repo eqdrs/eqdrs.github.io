@@ -17,8 +17,9 @@ welcome('Tom')
 
 Aqui, pretendo registrar e compartilhar minhas experiências sobre desenvolvimento, tecnologia e até sobre minha vida. Acho que deve ajudar também a melhorar um pouco minhas habilidades pessoais.
 
-Gosto muito de **Ruby on Rails**, mas não pretendo me limitar a isso. Caso queira me conhecer melhor, leia [sobre Everton Quadros][about].
+Gosto muito de **Ruby on Rails**, mas não pretendo me limitar a isso. Caso queira me conhecer melhor, estou no [LinkedIn][linkedin] e [Facebook][facebook] .
 
 E mais uma vez, sejam todos bem-vindos! =D
 
-[about]: https://eqdrs.github.io/about
+[linkedin]: https://www.linkedin.com/in/everton-quadros/
+[facebook]: https://www.facebook.com/quadros.ton
