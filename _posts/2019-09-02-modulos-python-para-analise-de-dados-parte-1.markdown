@@ -23,7 +23,7 @@ Vamos começar importando o NumPy. Também é possível utilizar: from numpy imp
 import numpy as np
 {% endhighlight %}
 
-Agora vamos criar uma matriz e utilizar os alguns dos métodos fornecidos pelo NumPy:
+Agora vamos criar uma matriz e utilizar alguns dos métodos fornecidos pelo NumPy:
 
 {% highlight python %}
 # Criando uma matriz a partir de uma lista de listas
@@ -65,7 +65,7 @@ O Pandas é uma espécie de Excel para linguagem Python, com o qual é possível
 
 Agora, vejamos como criar e manipular dataframes usando o Pandas. *Dataframes* são estruturas muito similares a uma planilha de Excel, ou uma tabela em um banco de dados relacional: possui linhas e colunas, onde são armazenados dados estruturados.
 
-{% highlight python linenos %}
+{% highlight python %}
 from pandas import DataFrame
 
 data = {'Estado': ['Santa Catarina', 'Paraná', 'Goiás', 'Bahia'], 

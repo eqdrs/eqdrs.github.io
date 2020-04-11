@@ -9,6 +9,11 @@
             <lastmod>2019-06-07T00:00:00+00:00</lastmod>
             <priority>1.00</priority>
         </url><url>
+                <loc>http://localhost:4000/clojure/2020/04/11/getting-started-clojure.html</loc>
+                <lastmod>2020-04-11T09:00:00-03:00</lastmod>
+                <changefreq>weekly</changefreq>
+                <priority>0.80</priority>
+            </url><url>
                 <loc>http://localhost:4000/computer%20vision/object%20detection/image%20processing/2019/10/17/real-time-object-detection.html</loc>
                 <lastmod>2019-10-17T20:00:00-03:00</lastmod>
                 <changefreq>weekly</changefreq>

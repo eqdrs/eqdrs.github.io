@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:200,300,400,500,600,700,800" rel="stylesheet">
+<link href="http://allfont.net/allfont.css?fonts=raleway-light" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="/assets/css/style.css">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh" crossorigin="anonymous"></script>
+<script src="/assets/typewrite/dist/typewrite.min.js"></script>
+<title>Primeiros passos com Clojure!</title>
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Primeiros passos com Clojure! | Everton Quadros.</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Primeiros passos com Clojure!" />
+<meta name="author" content="Everton Quadros" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Nesse período de quarentena, tenho ficado mais tempo em casa e aproveitado pra estudar algumas coisas legais. Uma delas é o Clojure, um dialeto variante da linguagem Lisp e, portanto, predominantemente funcional. Neste post, quero compartilhar com vocês o material que estou usando para dar meus primeiros passos na linguagem." />
+<meta property="og:description" content="Nesse período de quarentena, tenho ficado mais tempo em casa e aproveitado pra estudar algumas coisas legais. Uma delas é o Clojure, um dialeto variante da linguagem Lisp e, portanto, predominantemente funcional. Neste post, quero compartilhar com vocês o material que estou usando para dar meus primeiros passos na linguagem." />
+<link rel="canonical" href="http://localhost:4000/clojure/2020/04/11/getting-started-clojure.html" />
+<meta property="og:url" content="http://localhost:4000/clojure/2020/04/11/getting-started-clojure.html" />
+<meta property="og:site_name" content="Everton Quadros." />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-04-11T09:00:00-03:00" />
+<script type="application/ld+json">
+{"dateModified":"2020-04-11T09:00:00-03:00","datePublished":"2020-04-11T09:00:00-03:00","description":"Nesse período de quarentena, tenho ficado mais tempo em casa e aproveitado pra estudar algumas coisas legais. Uma delas é o Clojure, um dialeto variante da linguagem Lisp e, portanto, predominantemente funcional. Neste post, quero compartilhar com vocês o material que estou usando para dar meus primeiros passos na linguagem.","author":{"@type":"Person","name":"Everton Quadros"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/clojure/2020/04/11/getting-started-clojure.html"},"@type":"BlogPosting","url":"http://localhost:4000/clojure/2020/04/11/getting-started-clojure.html","headline":"Primeiros passos com Clojure!","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<script>
+        $(document).ready(function(){
+            $('#typewriteText').typewrite({
+                actions: [
+                    {type: 'Everton Quadros.'}
+                ]
+            });
+        });
+    </script>
+      
+  </head>
+  <body>
+    <main class="container">
+      <section class="about">
+        <a href="/"><img src="/assets/portfolio.jpeg" alt="Everton Quadros"></a>
+        <h2 id="title">
+          <a href="/" id="typewriteText"></a>
+        </h2>
+        <p class="tagline">Software Developer</p>
+        <ul class="social"><a href="https://github.com/eqdrs">
+              <li>
+                <i class="icon-github-circled"></i>
+              </li>
+            </a><a href="https://www.linkedin.com/in/everton-quadros/">
+              <li>
+                <i class="icon-linkedin-squared"></i>
+              </li>
+            </a><a href="https://twitter.com/ton_quadros">
+              <li>
+                <i class="icon-twitter-squared"></i>
+              </li>
+            </a></ul><p>&copy;
+          2020</p>
+      </section>
+      <section class="content">
+        <div class="post-container">
+  <a class="post-link" href="/clojure/2020/04/11/getting-started-clojure.html">
+    <h2 class="post-title">Primeiros passos com Clojure!</h2>
+  </a>
+  <div class="post-meta">
+    <ul class="post-categories"><li>Clojure</li></ul>
+    <div class="post-date"><i class="icon-calendar"></i>Apr 11, 2020</div>
+  </div>
+  <div class="post">
+    <p>Nesse período de quarentena, tenho ficado mais tempo em casa e aproveitado pra estudar algumas coisas legais. Uma delas é o <strong>Clojure</strong>, um dialeto variante da linguagem <a href="https://en.wikipedia.org/wiki/Lisp_(programming_language)">Lisp</a> e, portanto, predominantemente funcional. Neste post, quero compartilhar com vocês o material que estou usando para dar meus primeiros passos na linguagem.</p>
+
+<p>Como dito acima, Clojure é uma linguagem de programação variante do Lisp. Em outras palavras: parênteses intermináveis e sintaxe esquisita. Ela é executada pela JVM (apesar de existirem outras implementações) e preza pelo <a href="https://medium.com/@BobGuBobGu/immutability-in-clojure-53476dcb31a3">princípio da imutabilidade</a> e por estruturas de dados persistentes, o que facilita a criação de sistemas concorrentes e torna o código bem mais previsível. Como uma variante do Lisp, possui um console interpretador (repl) semelhante ao do Ruby (irb). Grandes empresas como Netflix, Nubank, eBay e Adobe utilizam o Clojure. Você pode conferir a lista completa <a href="https://clojure.org/community/companies">aqui</a>.</p>
+
+<p><br />
+<img class="center" src="/assets/images/clojure.png" />
+<br /></p>
+
+<p>Primeiro, vale comentar que em <a href="https://clojuredocs.org">ClojureDocs.org</a> e em <a href="https://clojure.org">Clojure.org</a> você encontra a documentação, referências úteis e vários exemplos de uso da linguagem. Além disso, o uso da <a href="https://www.jetbrains.com/idea/download/#section=linux">IntelliJ IDE</a> em conjunto com o plugin <a href="https://cursive-ide.com/userguide/">Cursive</a> irá facilitar bastante o desenvolvimento dos seus projetos em Clojure.</p>
+
+<p>Se, assim como eu, você gosta de aprender novas linguagens através da resolução de problemas, recomendo o <a href="https://github.com/functional-koans/clojure-koans">Clojure Koans</a>, um repositório do GitHub com vários exercícios de Clojure. Para iniciar os desafios, você precisará instalar a JDK e o <a href="https://github.com/technomancy/leiningen">Leiningen</a>. Em seguida, basta clonar o repositório e rodar o koans usando o comando:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>lein koan run
+</code></pre></div></div>
+
+<p>Outra opção divertida é o <a href="http://www.4clojure.com/">4Clojure</a>. Lá, você encontra exercícios interativos em vários níveis. Basta fazer o cadastro e iniciar os desafios online!</p>
+
+<p>Também recomendo o <a href="https://github.com/gigasquid/wonderland-clojure-katas">WonderLand Clojure Katas</a> e o <a href="http://www.parens-of-the-dead.com/">Parens of the Dead</a>. O primeiro é um conjunto de exercícios de Clojure inspirado no mundo de <em>Alice in Wonderland</em>. Já o <a href="http://www.parens-of-the-dead.com/">Parens of the Dead</a> é um screencast de jogos com temática de zumbis, escritos em Clojure e ClojureScript.</p>
+
+<p>Além dos repos e ferramentas citados acima, o livro <strong>Clojure for the Brave and True</strong> está disponível gratuitamente <a href="https://www.braveclojure.com/clojure-for-the-brave-and-true/">neste link</a>. Ele possui tópicos que vão desde a configuração do ambiente até temas mais avançados da linguagem, como programação paralela e concorrente usando Clojure. Caso prefira, você pode comprar uma cópia do livro no <a href="https://www.amazon.com.br/Clojure-Brave-True-Ultimate-Programmer/dp/1593275919">site da Amazon</a>.</p>
+
+<p>No <a href="https://clojurebridge.org/">ClojureBridge</a>, é possível encontrar workshops gratuitos de programação Clojure para iniciantes em grupos sub-representados na tecnologia. No ano passado, inclusive, eles organizaram um workshop na minha cidade natal, Salvador, voltado para a população negra.</p>
+
+<p>No YouTube, encontrei <a href="https://www.youtube.com/watch?v=jLsddw8_bt4&amp;list=PLXsXu5srjNlxI7b2smnHxDeMMwR4mVZ2m&amp;index=2">esse curso de introdução ao Clojure</a> ministrado por <a href="https://twitter.com/matgis">Mats Gisselson</a>. Alguns cursos online pagos também estão disponíveis na <a href="https://www.udemy.com/course/learning-clojure/">Udemy</a>, mas ainda não me inscrevi em nenhum deles.</p>
+
+<p>Para finalizar, deixo <a href="http://clojurescriptkoans.com/#equality/1">esse desafio</a> de <strong>ClojureScript</strong> (versão do Clojure que compila para JavaScript) do <a href="http://clojurescriptkoans.com/">ClojureScript Koans</a> para vocês se divertirem.</p>
+
+<p>É isso, espero que tenham gostado! Se cuidem, e <strong>#fiquememcasa</strong>! 😉</p>
+
+
+  </div></div>
+
+      </section>
+    </main></body>
+</html>

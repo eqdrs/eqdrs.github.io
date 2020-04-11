@@ -1,14 +1,17 @@
-title: Everton Quadros.
+title: Everton Quadros
 author: Everton Quadros
 email: evertonquadros15@gmail.com
 description: > # this means to ignore newlines until "show_exerpts:"
   Software Developer.
 show_excerpts: true # set to true to show excerpts on the homepage
+url: https://eqdrs.github.io/
 
 # Minima date format
 # refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
 sass:
   sass_dir: _sass
+twitter:
+  username: ton_quadros
 plainwhite:
   name: Everton Quadros
   tagline: Software Developer

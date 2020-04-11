@@ -19,6 +19,8 @@ Aqui, pretendo registrar e compartilhar minhas experiências sobre desenvolvimen
 
 Gosto muito de **Ruby on Rails**, mas não pretendo me limitar a isso. Caso queira me conhecer melhor, estou no [LinkedIn][linkedin] e [Facebook][facebook] .
 
+<iframe src="http://clojurescriptkoans.com/#equality/1" style="width: 900px; height: 400px; border: 5px solid #D6CABA;"></iframe>
+
 E mais uma vez, sejam todos bem-vindos! =D
 
 [linkedin]: https://www.linkedin.com/in/everton-quadros/

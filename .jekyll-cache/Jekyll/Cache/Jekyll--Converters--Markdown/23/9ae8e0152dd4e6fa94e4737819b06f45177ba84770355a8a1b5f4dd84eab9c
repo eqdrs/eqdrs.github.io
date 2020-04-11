@@ -1,4 +1,4 @@
-I"�<p>Como de costume, um primeiro post para dar as boas-vindas!</p>
+I"Z<p>Como de costume, um primeiro post para dar as boas-vindas!</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">welcome</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
   <span class="nb">puts</span> <span class="s2">"Welcome to my blog, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
@@ -9,7 +9,9 @@
 
 <p>Aqui, pretendo registrar e compartilhar minhas experiências sobre desenvolvimento, tecnologia e até sobre minha vida. Acho que deve ajudar também a melhorar um pouco minhas habilidades pessoais.</p>
 
-<p>Gosto muito de <strong>Ruby on Rails</strong>, mas não pretendo me limitar a isso. Caso queira me conhecer melhor, leia <a href="https://eqdrs.github.io/about">sobre Everton Quadros</a>.</p>
+<p>Gosto muito de <strong>Ruby on Rails</strong>, mas não pretendo me limitar a isso. Caso queira me conhecer melhor, estou no <a href="https://www.linkedin.com/in/everton-quadros/">LinkedIn</a> e <a href="https://www.facebook.com/quadros.ton">Facebook</a> .</p>
+
+<iframe src="http://clojurescriptkoans.com/#equality/1" style="width: 900px; height: 400px; border: 5px solid #D6CABA;"></iframe>
 
 <p>E mais uma vez, sejam todos bem-vindos! =D</p>
 
